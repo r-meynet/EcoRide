@@ -3,22 +3,104 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- lien vers le scss compilé en css -->
         <link rel="stylesheet" href="./scss/main.css" />
+
+        <!-- lien vers le cdn de boostrap icons -->
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+
+        <!-- lien vers le script de routage -->
         <script type="module" src="./Router/router.js" defer></script>
+
+        <!-- lien vers le script de bootstrap -->
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"></script>
+
         <title>Document</title>
     </head>
+    <!-- tout le body aura un fond plus doux -->
     <body class="bg-light">
-        <header>Mon header</header>
+        <header>
+            <!-- header réalisé avec le composant bootstrap de navbar-->
+            <nav class="navbar navbar-expand-lg bg-dark py-0" data-bs-theme="dark">
+                <div class="container-fluid position-relative">
+                    <a href="/compte">
+                        <!-- avatar du compte -->
+                        <i class="bi bi-person-circle fs-1 text-light pb-2"></i>
+                    </a>
+
+                    <!-- nom de la marque ecoRide affiché uniquement sur petits écrans -->
+                    <a class="navbar-brand fs-4 text-light mx-auto d-lg-none" href="/">ecoRide</a>
+
+                    <!-- nom de la marque affiché sur écrans lg+, pour le centrer -->
+                    <a
+                        class="navbar-brand fs-4 text-light position-absolute top-50 start-50 translate-middle d-none d-lg-block"
+                        href="/">
+                        ecoRide
+                    </a>
+
+                    <!-- menu burger -->
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- liens de la navbar, avec icônes ux design -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="flex-shrink: 0">
+                            <li class="nav-item text-center">
+                                <a class="nav-link pt-0" href="/">
+                                    <i
+                                        class="bi bi-house-door-fill fs-2 py-0 text-light d-none d-lg-inline"></i>
+                                    <br />
+                                    Accueil
+                                </a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a class="nav-link pt-0" href="/covoiturages">
+                                    <i
+                                        class="bi bi-car-front-fill fs-2 py-0 text-light d-none d-lg-inline"></i>
+                                    <br />
+                                    Covoiturages
+                                </a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a class="nav-link pt-0" href="/contact">
+                                    <i
+                                        class="bi bi-envelope-at-fill fs-2 py-0 text-light d-none d-lg-inline"></i>
+                                    <br />
+                                    Contact
+                                </a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a class="nav-link pt-0" href="/signin">
+                                    <i
+                                        class="bi bi-box-arrow-right fs-2 py-0 text-light d-none d-lg-inline"></i>
+                                    <br />
+                                    Connexion
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
         <main id="main-page">
-            <!-- Contenu généré avec le système de routage -->
+            <!-- Ici sera le contenu importé avec le système de routage -->
         </main>
+
         <footer>Mon footer</footer>
     </body>
 </html>
