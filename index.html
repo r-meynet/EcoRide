@@ -23,8 +23,9 @@
 
         <title>Document</title>
     </head>
+
     <!-- tout le body aura un fond plus doux -->
-    <body class="bg-light">
+    <body class="bg-light d-flex flex-column min-vh-100">
         <header>
             <!-- header réalisé avec le composant bootstrap de navbar-->
             <nav class="navbar navbar-expand-lg bg-dark py-0" data-bs-theme="dark">
@@ -101,6 +102,15 @@
             <!-- Ici sera le contenu importé avec le système de routage -->
         </main>
 
-        <footer>Mon footer</footer>
+        <footer class="mt-auto mb-0">
+            <div class="bg-dark text-light py-2 text-center">
+                <div>ecoRide</div>
+                <div>
+                    <a href="/mentions" class="text-light">Mentions légales</a>
+                </div>
+                <div>contact@ecoride.fr</div>
+                <div>© ecoRide 2025</div>
+            </div>
+        </footer>
     </body>
 </html>
