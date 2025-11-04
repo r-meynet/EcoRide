@@ -11978,4 +11978,30 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+.hero-scene {
+  position: relative;
+  margin-bottom: 15px;
+}
+.hero-scene::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/route-hero.jpg);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+}
+.hero-scene .hero-scene-content {
+  height: 330px;
+}
+.hero-scene .hero-scene-overlay {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0), #F9FBE7);
+  width: 100%;
+  height: 100px;
 }/*# sourceMappingURL=main.css.map */
