@@ -1,0 +1,266 @@
+<h1 class="text-center text-light my-5">Covoiturages</h1>
+
+<!-- Section recherche -->
+<section class="container">
+    <div class="card mb-4 border-0 shadow">
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <h4 class="card-title text-center mb-3">Trouver mon covoiturage</h4>
+                    <div class="mb-3 col-lg-4 col-12">
+                        <label for="villeDepart" class="form-label">Ville de départ</label>
+                        <input type="text" class="form-control" id="villeDepart" />
+                    </div>
+                    <div class="mb-3 col-lg-4 col-12">
+                        <label for="villeArrive" class="form-label">Ville d'arrivée</label>
+                        <input type="text" class="form-control" id="villeArrive" />
+                    </div>
+                    <div class="mb-3 col-lg-4 col-12">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" />
+                    </div>
+                    <div class="text-center my-auto">
+                        <button type="submit" class="btn btn-primary">Voir les trajets</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <!-- Affichage global de la page -->
+    <div class="row row-cols-2">
+        <!-- Section de filtre -->
+        <div class="col-3 d-none d-lg-block">
+            <div class="card mb-4 border-0 shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="d-flex flex-column">
+                            <div>
+                                <h4 class="card-title text-center mb-3">Filtrer la recherche</h4>
+                                <label class="form-label" for="switchCheckEco">
+                                    Voyage écologique uniquement
+                                </label>
+                                <div class="form-check form-switch pt-1">
+                                    <input
+                                        class="form-check-input mb-3"
+                                        type="checkbox"
+                                        role="switch"
+                                        id="switchCheckEco" />
+                                    <label class="form-check-label" for="switchCheckEco">Eco</label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="prixMax" class="form-label">
+                                    Prix maximum (crédits)
+                                </label>
+                                <input
+                                    type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="100"
+                                    value="50"
+                                    id="prixMax" />
+                                <output for="prixMax" id="rangeValue" aria-hidden="true"></output>
+                            </div>
+
+                            <div>
+                                <label for="dureeMax" class="form-label">Durée maximum (min)</label>
+                                <input
+                                    type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="100"
+                                    value="50"
+                                    id="dureeMax" />
+                                <output for="dureeMax" id="rangeValue" aria-hidden="true"></output>
+                            </div>
+
+                            <div class="text-center mb-2">
+                                <button class="btn btn-outline-secondary">Réinitialiser</button>
+                            </div>
+                            <div class="text-center my-auto">
+                                <button type="submit" class="btn btn-primary">
+                                    Filtrer les trajets
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section des covoiturages disponibles -->
+        <div class="col-12 col-lg-9">
+            <!-- Affichage résultats et bouton filtre -->
+            <div class="d-flex align-items-center mb-3">
+                <h5 class="me-3 mb-0">5 résultats</h5>
+                <button
+                    type="button"
+                    class="btn btn-outline-dark"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Filtres (modal à coder, bouton à d-none en lg)
+                </button>
+            </div>
+
+            <!-- Carte 1 -->
+            <div class="card mb-4 border-0 shadow">
+                <div class="row row-cols-2 row-cols-lg-4 gx-3 align-items-center">
+                    <!-- Infos du profil -->
+                    <div class="col d-flex flex-column order-lg-1 px-4 py-2">
+                        <div class="d-flex flex-row">
+                            <img src="../images/Ricky.jpg" class="profile-picture" alt="" />
+                            <h6 class="fs-5 ps-2">Ricky</h6>
+                        </div>
+                        <div class="text-primary">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                    </div>
+
+                    <!-- Itinéraire -->
+                    <div class="col order-lg-2 ps-3 py-2">
+                        <div>🚗 Paris → Lyon</div>
+                        <div>
+                            <div>📅 01/11/2025</div>
+                            <div>⏰ 08:00 - 13:00</div>
+                        </div>
+                    </div>
+
+                    <!-- Prix et nombre de places -->
+                    <div
+                        class="col row row-cols-2 row-cols-lg-1 order-lg-3 ps-3 py-2 mb-auto my-lg-auto text-center fs-5">
+                        <div class="col pe-0">
+                            25
+                            <i class="bi bi-coin"></i>
+                        </div>
+                        <div class="col">
+                            <i class="bi bi-people-fill d-lg-none"></i>
+                            2
+                            <span class="d-none d-lg-inline">places disponibles</span>
+                        </div>
+                    </div>
+
+                    <!-- Détails -->
+                    <div class="col order-lg-4 px-4 py-2 text-center my-auto">
+                        <a href="/details" class="btn btn-outline-secondary">+ détails</a>
+                        <div class="fs-5">
+                            eco
+                            <i class="bi bi-leaf-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 2 -->
+            <div class="card mb-4 border-3 border-primary shadow">
+                <div class="row row-cols-2 row-cols-lg-4 gx-3 align-items-center">
+                    <!-- Infos du profil -->
+                    <div class="col d-flex flex-column order-lg-1 px-4 py-2">
+                        <div class="d-flex flex-row">
+                            <img src="../images/Ricky.jpg" class="profile-picture" alt="" />
+                            <h6 class="fs-5 ps-2">Ricky</h6>
+                        </div>
+                        <div class="text-primary">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                    </div>
+
+                    <!-- Itinéraire -->
+                    <div class="col order-lg-2 ps-3 py-2">
+                        <div>🚗 Paris → Lyon</div>
+                        <div>
+                            <div>📅 01/11/2025</div>
+                            <div>⏰ 08:00 - 13:00</div>
+                        </div>
+                    </div>
+
+                    <!-- Prix et nombre de places -->
+                    <div
+                        class="col row row-cols-2 row-cols-lg-1 order-lg-3 ps-3 py-2 mb-auto my-lg-auto text-center fs-5">
+                        <div class="col pe-0">
+                            25
+                            <i class="bi bi-coin"></i>
+                        </div>
+                        <div class="col">
+                            <i class="bi bi-people-fill d-lg-none"></i>
+                            2
+                            <span class="d-none d-lg-inline">places disponibles</span>
+                        </div>
+                    </div>
+
+                    <!-- Détails -->
+                    <div class="col order-lg-4 px-4 py-2 text-center my-auto">
+                        <a href="/details" class="btn btn-primary">+ détails</a>
+                        <div class="fs-5 text-primary">
+                            eco
+                            <i class="bi bi-leaf-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte 3 -->
+            <div class="card mb-4 border-0 shadow">
+                <div class="row row-cols-2 row-cols-lg-4 gx-3 align-items-center">
+                    <!-- Infos du profil -->
+                    <div class="col d-flex flex-column order-lg-1 px-4 py-2">
+                        <div class="d-flex flex-row">
+                            <img src="../images/Ricky.jpg" class="profile-picture" alt="" />
+                            <h6 class="fs-5 ps-2">Ricky</h6>
+                        </div>
+                        <div class="text-primary">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                    </div>
+
+                    <!-- Itinéraire -->
+                    <div class="col order-lg-2 ps-3 py-2">
+                        <div>🚗 Paris → Lyon</div>
+                        <div>
+                            <div>📅 01/11/2025</div>
+                            <div>⏰ 08:00 - 13:00</div>
+                        </div>
+                    </div>
+
+                    <!-- Prix et nombre de places -->
+                    <div
+                        class="col row row-cols-2 row-cols-lg-1 order-lg-3 ps-3 py-2 mb-auto my-lg-auto text-center fs-5">
+                        <div class="col pe-0">
+                            25
+                            <i class="bi bi-coin"></i>
+                        </div>
+                        <div class="col">
+                            <i class="bi bi-people-fill d-lg-none"></i>
+                            2
+                            <span class="d-none d-lg-inline">places disponibles</span>
+                        </div>
+                    </div>
+
+                    <!-- Détails -->
+                    <div class="col order-lg-4 px-4 py-2 text-center my-auto">
+                        <a href="/details" class="btn btn-outline-secondary">+ détails</a>
+                        <div class="fs-5">
+                            eco
+                            <i class="bi bi-leaf-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
