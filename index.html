@@ -98,8 +98,21 @@
             </nav>
         </header>
 
-        <main id="main-page">
-            <!-- Ici sera le contenu importé avec le système de routage -->
+        <!-- Le main est position-relative pour accueillir l'image de fond -->
+        <main class="position-relative">
+            <!-- On positionne une div en position-absolute pour passer en arrière plan avec z-n1 -->
+            <div class="position-absolute top-0 w-100 z-n1">
+                <!-- Appel vers notre classe scss qui contient l'image de fond et les effets -->
+                <div class="hero-scene">
+                    <div class="hero-scene-content">
+                        <div class="hero-scene-overlay"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="main-page" class="z-0 position-relative">
+                <!-- Ici sera le contenu importé avec le système de routage -->
+            </section>
         </main>
 
         <footer class="mt-auto mb-0">
