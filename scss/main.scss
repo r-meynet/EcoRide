@@ -50,3 +50,10 @@ body {
   );
 }
 
+.profile-picture {
+    height: 48px;
+    width: 48px;
+    border-radius: 999px;
+    object-fit: cover;
+    object-position: center;
+}
