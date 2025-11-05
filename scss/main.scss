@@ -17,7 +17,7 @@
     }
 
     .hero-scene-content {
-        height: 330px;
+        height: 250px;
     }
 
     .hero-scene-overlay {
@@ -28,3 +28,25 @@
         height: 100px;
     }
 }
+
+.text-justify {
+    text-align: justify;
+}
+
+.card-img-cover {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+body {
+  background: $light; // ton fond clair
+  background-image: radial-gradient(
+    circle at 50% 40%,
+    rgba($primary, 0.08) 0%,
+    rgba($primary, 0.03) 35%,
+    rgba($primary, 0) 70%
+  );
+}
+
