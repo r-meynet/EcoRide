@@ -64,7 +64,7 @@ const LoadContentPage = async () => {
 
     // Si la page est la page de vue des covoiturages, on lance la procédure d'affichage des étoiles de sa note
     if (actualRoute.url == "/covoiturages") {
-        createStars();
+        affichageTrajets(tripCache);
     }
 };
 
