@@ -4,7 +4,7 @@
 <section class="container">
     <div class="card mb-4 border-0 shadow">
         <div class="card-body">
-            <form>
+            <div>
                 <div class="row">
                     <h4 class="card-title text-center mb-3">Trouver mon covoiturage</h4>
                     <div class="mb-3 col-lg-4 col-12">
@@ -12,18 +12,20 @@
                         <input type="text" class="form-control" id="villeDepart" />
                     </div>
                     <div class="mb-3 col-lg-4 col-12">
-                        <label for="villeArrive" class="form-label">Ville d'arrivée</label>
-                        <input type="text" class="form-control" id="villeArrive" />
+                        <label for="villeArrivee" class="form-label">Ville d'arrivée</label>
+                        <input type="text" class="form-control" id="villeArrivee" />
                     </div>
                     <div class="mb-3 col-lg-4 col-12">
                         <label for="date" class="form-label">Date</label>
                         <input type="date" class="form-control" id="date" />
                     </div>
                     <div class="text-center my-auto">
-                        <button type="submit" class="btn btn-primary">Voir les trajets</button>
+                        <button class="btn btn-primary" id="btnRechercherCovoit">
+                            Voir les trajets
+                        </button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </section>
@@ -109,7 +111,6 @@
             <div id="affichage-trajets">
                 <!-- Le contenu des cartes représentant les covoiturages seront affichés ici -->
             </div>
-
         </div>
     </div>
 </section>

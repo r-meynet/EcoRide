@@ -117,3 +117,19 @@ function afficherNombreResultat(nombreResultats, destination) {
         destination.innerHTML = `${nombreResultats} résultats`;
     }
 }
+
+// Fonction pour la recherche de trajets
+function rechercheTrajets(trips, villeDepart, villeArrivee) {
+    // Convertir les arguments en minuscule
+    villeDepart = villeDepart.toLowerCase();
+    villeArrivee = villeArrivee.toLowerCase();
+
+    // Filtre des trajets avec les arguments du formulaire
+    const trajetsRecherche = trips.filter(
+        (trip) =>
+            (!villeDepart || trip.ville_depart.toLowerCase() === villeDepart) &&
+            (!villeArrivee || trip.ville_arrivee.toLowerCase() === villeArrivee)
+    );
+
+    return trajetsRecherche;
+}

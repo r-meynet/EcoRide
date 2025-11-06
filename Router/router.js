@@ -66,6 +66,25 @@ const LoadContentPage = async () => {
     if (actualRoute.url == "/covoiturages") {
         affichageTrajets(tripCache);
     }
+
+    // On place ici les écouteurs d'évènements
+    // Evènement au clic sur la recherche - page home et page covoiturages
+    const btnRechercherCovoit = document.getElementById("btnRechercherCovoit");
+    const btnRechercherHome = document.getElementById("btnRechercherHome");
+    const inputDepart = document.getElementById("villeDepart");
+    const inputArrivee = document.getElementById("villeArrivee");
+
+    btnRechercherCovoit.addEventListener("click", () => {
+        // Récupérer les valeurs des input
+        const villeDepart = inputDepart.value;
+        const villeArrivee = inputArrivee.value;
+
+        // Lancer le tri des résultats
+        const voyagesTries = rechercheTrajets(tripCache, villeDepart, villeArrivee);
+
+        // Afficher les résultats
+        affichageTrajets(voyagesTries);
+    });
 };
 
 // Fonction pour gérer les événements de routage (clic sur les liens)
