@@ -65,6 +65,7 @@ const LoadContentPage = async () => {
     // Comportement sur la page des covoiturages
     if (actualRoute.url == "/covoiturages") {
         const btnRechercherCovoit = document.getElementById("btnRechercherCovoit");
+        const btnViderRecherche = document.getElementById("btnViderRecherche");
         const inputDepartCovoit = document.getElementById("villeDepartCovoit");
         const inputArriveeCovoit = document.getElementById("villeArriveeCovoit");
         const inputDateCovoit = document.getElementById("dateCovoit");
@@ -82,7 +83,7 @@ const LoadContentPage = async () => {
 
         storageToInput(inputDepartCovoit, inputArriveeCovoit, inputDateCovoit);
 
-        // Evénement au clic sur la recherche page covoiturages
+        // Evénements
         btnRechercherCovoit.addEventListener("click", () => {
             // Récupérer les valeurs des input
             const villeDepart = inputDepartCovoit.value;
@@ -94,6 +95,14 @@ const LoadContentPage = async () => {
 
             // Afficher les résultats
             affichageTrajets(voyagesTries);
+        });
+
+        btnViderRecherche.addEventListener("click", () => {
+            inputDepartCovoit.value = "";
+            inputArriveeCovoit.value = "";
+            inputDateCovoit.value = "";
+
+            affichageTrajets(tripCache);
         });
     }
 
