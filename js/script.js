@@ -19,12 +19,12 @@ function createStars() {
 }
 
 // Requête auprès de la base de données test en json
-let tripCache = [];
+let tripBrut = [];
 
 fetch("../data/data.json")
     .then((reponse) => reponse.json())
     .then((data) => {
-        tripCache = data.trips;
+        tripBrut = data.trips;
     });
 
 // Fonction qui va afficher les trajets
@@ -78,7 +78,7 @@ function creationCarteTrajet(trip, destination) {
 
     // Contenu de la carte
     const cardTrajet = `
-    <div class="${classEcoCard}">
+    <div class="${classEcoCard}" id="${trip.id}">
     <div class="row row-cols-2 row-cols-lg-4 gx-3 align-items-center">
     <div class="col d-flex flex-column order-lg-1 px-4 py-2">
     <div class="d-flex flex-row">
@@ -153,4 +153,13 @@ function formatISOToFR(iso) {
     if (!iso) return "";
     const [y, m, d] = iso.split("-");
     return `${d}/${m}/${y}`;
+}
+
+// Fonctions pour gérer la mise en cache des tableaux de covoiturages
+function setTripsInCache(trips) {
+    sessionStorage.setItem("trips", trips);
+}
+
+function getTripsInCache() {
+    return sessionStorage.getItem("trips");
 }
