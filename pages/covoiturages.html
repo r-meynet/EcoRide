@@ -5,7 +5,7 @@
     <div class="card mb-4 border-0 shadow">
         <div class="card-body">
             <div>
-                <div class="row">
+                <form class="row">
                     <h4 class="card-title text-center mb-3">Trouver mon covoiturage</h4>
                     <div class="mb-3 col-lg-4 col-12">
                         <label for="villeDepartCovoit" class="form-label">Ville de départ</label>
@@ -27,14 +27,14 @@
                             Réinitialiser
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Affichage global de la page -->
 <section class="container">
-    <!-- Affichage global de la page -->
     <div class="row row-cols-2">
         <!-- Section de filtre -->
         <div class="col-3 d-none d-lg-block">
@@ -44,7 +44,7 @@
                         <div class="d-flex flex-column">
                             <div>
                                 <h4 class="card-title text-center mb-3">Filtrer la recherche</h4>
-                                <label class="form-label" for="switchCheckEco">
+                                <label class="form-label fw-semibold">
                                     Voyage écologique uniquement
                                 </label>
                                 <div class="form-check form-switch pt-1">
@@ -52,42 +52,56 @@
                                         class="form-check-input mb-3"
                                         type="checkbox"
                                         role="switch"
-                                        id="switchCheckEco" />
-                                    <label class="form-check-label" for="switchCheckEco">Eco</label>
+                                        id="switchCheckEcoSide" />
+                                    <label class="form-check-label" for="switchCheckEcoSide">
+                                        Eco
+                                    </label>
                                 </div>
                             </div>
 
                             <div>
-                                <label for="prixMax" class="form-label">
-                                    Prix maximum (crédits)
-                                </label>
-                                <input
-                                    type="range"
-                                    class="form-range"
-                                    min="0"
-                                    max="100"
-                                    value="50"
-                                    id="prixMax" />
-                                <output for="prixMax" id="rangeValue" aria-hidden="true"></output>
+                                <label class="form-label fw-semibold">Prix maximum (crédits)</label>
+                                <div class="text-center">
+                                    <input
+                                        type="range"
+                                        class="form-range"
+                                        min="0"
+                                        max="100"
+                                        value="50"
+                                        id="prixMaxSide" />
+                                    <output
+                                        for="prixMaxSide"
+                                        id="prixMaxSideOutput"
+                                        aria-hidden="true"
+                                        class="mb-3"></output>
+                                </div>
                             </div>
 
                             <div>
-                                <label for="dureeMax" class="form-label">Durée maximum (min)</label>
-                                <input
-                                    type="range"
-                                    class="form-range"
-                                    min="0"
-                                    max="100"
-                                    value="50"
-                                    id="dureeMax" />
-                                <output for="dureeMax" id="rangeValue" aria-hidden="true"></output>
+                                <label class="form-label fw-semibold">Durée maximum (min)</label>
+                                <div class="text-center">
+                                    <input
+                                        type="range"
+                                        class="form-range"
+                                        min="0"
+                                        max="100"
+                                        value="50"
+                                        id="dureeMaxSide" />
+                                    <output
+                                        for="dureeMaxSide"
+                                        id="dureeMaxSideOutput"
+                                        aria-hidden="true"
+                                        class="mb-3"></output>
+                                </div>
                             </div>
 
                             <div class="text-center mb-2">
-                                <button class="btn btn-outline-secondary">Réinitialiser</button>
+                                <button class="btn btn-outline-secondary" id="btnViderFiltreSide">
+                                    Réinitialiser
+                                </button>
                             </div>
                             <div class="text-center my-auto">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="btnFiltreSide">
                                     Filtrer les trajets
                                 </button>
                             </div>
@@ -104,10 +118,11 @@
                 <h5 class="me-3 mb-0" id="nombreResultats"></h5>
                 <button
                     type="button"
-                    class="btn btn-outline-dark"
+                    class="btn btn-outline-dark d-inline d-lg-none"
                     data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
-                    Filtres (modal à coder, bouton à d-none en lg)
+                    data-bs-target="#filtreModal">
+                    Filtres
+                    <i class="bi bi-filter-circle-fill"></i>
                 </button>
             </div>
 
@@ -117,3 +132,89 @@
         </div>
     </div>
 </section>
+
+<!-- Section pour la modale de filtre (uniquement en mobile) -->
+<div
+    class="modal"
+    tabindex="-1"
+    id="filtreModal"
+    aria-labelledby="filtreModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="filtreModalLabel">Filtrer la recherche</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="d-flex flex-column">
+                        <div>
+                            <h4 class="card-title text-center mb-3">Filtrer la recherche</h4>
+                            <label class="form-label fw-semibold">
+                                Voyage écologique uniquement
+                            </label>
+                            <div class="form-check form-switch pt-1">
+                                <input
+                                    class="form-check-input mb-3"
+                                    type="checkbox"
+                                    role="switch"
+                                    id="switchCheckEcoModal" />
+                                <label class="form-check-label" for="switchCheckEcoModal">
+                                    Eco
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="form-label fw-semibold">Prix maximum (crédits)</label>
+                            <div class="text-center">
+                                <input
+                                    type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="100"
+                                    value="50"
+                                    id="prixMaxModal" />
+                                <output
+                                    for="prixMaxModal"
+                                    id="prixMaxModalOutput"
+                                    aria-hidden="true"
+                                    class="mb-3"></output>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="form-label fw-semibold">Durée maximum (min)</label>
+                            <div class="text-center">
+                                <input
+                                    type="range"
+                                    class="form-range"
+                                    min="0"
+                                    max="100"
+                                    value="50"
+                                    id="dureeMaxModal" />
+                                <output
+                                    for="dureeMaxModal"
+                                    id="dureeMaxModalOutput"
+                                    aria-hidden="true"
+                                    class="mb-3"></output>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-outline-secondary">Réinitialiser</button>
+                <button type="button" class="btn btn-primary">Filtrer les trajets</button>
+            </div>
+        </div>
+    </div>
+</div>

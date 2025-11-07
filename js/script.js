@@ -159,7 +159,7 @@ function formatISOToFR(iso) {
 function setTripsInCache(trips) {
     sessionStorage.setItem("trips", trips);
 }
-
 function getTripsInCache() {
     return sessionStorage.getItem("trips");
 }
+
