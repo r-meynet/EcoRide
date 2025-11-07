@@ -133,3 +133,12 @@ function rechercheTrajets(trips, villeDepart, villeArrivee) {
 
     return trajetsRecherche;
 }
+
+// Fonction qui écrit le contenu du sessionStorage dans les input
+function storageToInput(inputDepart, inputArrivee) {
+    const depart = sessionStorage.getItem("depart");
+    const arrivee = sessionStorage.getItem("arrivee");
+
+    if (depart) inputDepart.value = depart;
+    if (arrivee) inputArrivee.value = arrivee;
+}

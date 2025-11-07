@@ -62,29 +62,54 @@ const LoadContentPage = async () => {
     // Changement du titre de la page
     document.title = actualRoute.title + " - " + websiteName;
 
-    // Si la page est la page de vue des covoiturages, on lance la procédure d'affichage des étoiles de sa note
+    // Comportement sur la page des covoiturages
     if (actualRoute.url == "/covoiturages") {
-        affichageTrajets(tripCache);
+        const btnRechercherCovoit = document.getElementById("btnRechercherCovoit");
+        const inputDepartCovoit = document.getElementById("villeDepartCovoit");
+        const inputArriveeCovoit = document.getElementById("villeArriveeCovoit");
+
+        // On affiche les covoiturages issus de la recherche en sessionStorage
+        // (recherche qui vient de la page home)
+        const tripCacheTri = rechercheTrajets(
+            tripCache,
+            sessionStorage.getItem("depart"),
+            sessionStorage.getItem("arrivee")
+        );
+        affichageTrajets(tripCacheTri);
+
+        storageToInput(inputDepartCovoit, inputArriveeCovoit);
+
+        // Evénement au clic sur la recherche page covoiturages
+        btnRechercherCovoit.addEventListener("click", () => {
+            // Récupérer les valeurs des input
+            const villeDepart = inputDepartCovoit.value;
+            const villeArrivee = inputArriveeCovoit.value;
+
+            // Lancer le tri des résultats
+            const voyagesTries = rechercheTrajets(tripCache, villeDepart, villeArrivee);
+
+            // Afficher les résultats
+            affichageTrajets(voyagesTries);
+        });
     }
 
-    // On place ici les écouteurs d'évènements
-    // Evènement au clic sur la recherche - page home et page covoiturages
-    const btnRechercherCovoit = document.getElementById("btnRechercherCovoit");
-    const btnRechercherHome = document.getElementById("btnRechercherHome");
-    const inputDepart = document.getElementById("villeDepart");
-    const inputArrivee = document.getElementById("villeArrivee");
+    // Comportement sur la page home
+    if (actualRoute.url == "/") {
+        // Evénement clic recherche page home
+        const btnRechercherHome = document.getElementById("btnRechercherHome");
+        const inputDepartHome = document.getElementById("villeDepartHome");
+        const inputArriveeHome = document.getElementById("villeArriveeHome");
 
-    btnRechercherCovoit.addEventListener("click", () => {
-        // Récupérer les valeurs des input
-        const villeDepart = inputDepart.value;
-        const villeArrivee = inputArrivee.value;
+        // On vide le sessionStorage
+        sessionStorage.setItem("depart", "");
+        sessionStorage.setItem("arrivee", "");
 
-        // Lancer le tri des résultats
-        const voyagesTries = rechercheTrajets(tripCache, villeDepart, villeArrivee);
-
-        // Afficher les résultats
-        affichageTrajets(voyagesTries);
-    });
+        btnRechercherHome.addEventListener("click", () => {
+            // Stocker les valeurs des inputs
+            sessionStorage.setItem("depart", inputDepartHome.value);
+            sessionStorage.setItem("arrivee", inputArriveeHome.value);
+        });
+    }
 };
 
 // Fonction pour gérer les événements de routage (clic sur les liens)
