@@ -162,4 +162,3 @@ function setTripsInCache(trips) {
 function getTripsInCache() {
     return sessionStorage.getItem("trips");
 }
-

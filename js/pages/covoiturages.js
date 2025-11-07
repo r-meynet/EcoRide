@@ -95,3 +95,61 @@ rangeOutputDureeModal.textContent = rangeInputDureeSide.value + " minutes";
 rangeInputDureeModal.addEventListener("input", function () {
     rangeOutputDureeModal.textContent = `${this.value} minutes`;
 });
+
+// #
+// Gestion des filtres
+const btnFiltreSide = document.getElementById("btnFiltreSide");
+
+btnFiltreSide.addEventListener("click", (e) => {
+    e.preventDefault();
+    const filtres = getFiltre("btnFiltreSide");
+
+    const tripsActuels = getTripsInCache();
+
+    filtrerCovoiturages(tripsActuels, filtres);
+});
+
+const btnResetFiltreSide = document.getElementById("btnViderFiltreSide");
+
+btnResetFiltreSide.addEventListener("click", (e) => {
+    e.preventDefault();
+    resetFiltre();
+    const tripsActuels = getTripsInCache();
+});
+
+// Création des fonctions pour filtrer
+function getFiltre(idBouton) {
+    // On récupère le bouton qui a été cliqué
+    const bouton = document.getElementById(idBouton);
+
+    // Suivant où a été effectué le filtre, on définit un suffixe de variables
+    const suffixOrigin = bouton.dataset.filtre === "side" ? "Side" : "Modal";
+    const suffixDestination = bouton.dataset.filtre === "side" ? "Modal" : "Side";
+
+    // On récupère les valeurs des input dans la section utilisée
+    const inputEco = document.getElementById(`switchCheckEco${suffixOrigin}`);
+    const inputPrix = document.getElementById(`prixMax${suffixOrigin}`);
+    const inputDuree = document.getElementById(`dureeMax${suffixOrigin}`);
+
+    // On met à jour également l'autre section avec les même valeurs
+    const inputEcoDestination = document.getElementById(`switchCheckEco${suffixDestination}`);
+    const inputPrixDestination = document.getElementById(`prixMax${suffixDestination}`);
+    const inputDureeDestination = document.getElementById(`dureeMax${suffixDestination}`);
+
+    inputEcoDestination.checked = inputEco.checked;
+    inputPrixDestination.value = inputPrix.value;
+    inputDureeDestination.value = inputDuree.value;
+
+    // On met à jour les output de range
+    const prixOutputDestination = document.getElementById(`prixMax${suffixDestination}Output`);
+    const dureeOutputDestination = document.getElementById(`dureeMax${suffixDestination}Output`);
+    prixOutputDestination.textContent = `${inputPrixDestination.value} crédits`;
+    dureeOutputDestination.textContent = `${inputDureeDestination.value} minutes`;
+
+    // Pour finir, on retourne un objet avec les 3 statuts de filtres
+    return { inputEco, inputPrix, inputDuree };
+}
+
+function resetFiltre() {}
+
+function filtrerCovoiturages(trips, filtres) {}
