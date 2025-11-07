@@ -67,26 +67,30 @@ const LoadContentPage = async () => {
         const btnRechercherCovoit = document.getElementById("btnRechercherCovoit");
         const inputDepartCovoit = document.getElementById("villeDepartCovoit");
         const inputArriveeCovoit = document.getElementById("villeArriveeCovoit");
+        const inputDateCovoit = document.getElementById("dateCovoit");
 
         // On affiche les covoiturages issus de la recherche en sessionStorage
         // (recherche qui vient de la page home)
         const tripCacheTri = rechercheTrajets(
             tripCache,
             sessionStorage.getItem("depart"),
-            sessionStorage.getItem("arrivee")
+            sessionStorage.getItem("arrivee"),
+            sessionStorage.getItem("date")
         );
+
         affichageTrajets(tripCacheTri);
 
-        storageToInput(inputDepartCovoit, inputArriveeCovoit);
+        storageToInput(inputDepartCovoit, inputArriveeCovoit, inputDateCovoit);
 
         // Evénement au clic sur la recherche page covoiturages
         btnRechercherCovoit.addEventListener("click", () => {
             // Récupérer les valeurs des input
             const villeDepart = inputDepartCovoit.value;
             const villeArrivee = inputArriveeCovoit.value;
+            const dateTrajet = inputDateCovoit.value;
 
             // Lancer le tri des résultats
-            const voyagesTries = rechercheTrajets(tripCache, villeDepart, villeArrivee);
+            const voyagesTries = rechercheTrajets(tripCache, villeDepart, villeArrivee, dateTrajet);
 
             // Afficher les résultats
             affichageTrajets(voyagesTries);
@@ -99,15 +103,18 @@ const LoadContentPage = async () => {
         const btnRechercherHome = document.getElementById("btnRechercherHome");
         const inputDepartHome = document.getElementById("villeDepartHome");
         const inputArriveeHome = document.getElementById("villeArriveeHome");
+        const inputDateHome = document.getElementById("dateHome");
 
         // On vide le sessionStorage
         sessionStorage.setItem("depart", "");
         sessionStorage.setItem("arrivee", "");
+        sessionStorage.setItem("date", "");
 
         btnRechercherHome.addEventListener("click", () => {
             // Stocker les valeurs des inputs
             sessionStorage.setItem("depart", inputDepartHome.value);
             sessionStorage.setItem("arrivee", inputArriveeHome.value);
+            sessionStorage.setItem("date", inputDateHome.value);
         });
     }
 };

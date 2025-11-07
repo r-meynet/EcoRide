@@ -90,13 +90,15 @@ function creationCarteTrajet(trip, destination) {
     <div class="col order-lg-2 ps-3 py-2">
     <div>🚗 ${trip.ville_depart} → ${trip.ville_arrivee}</div>
     <div>
-    <div>📅 ${trip.date}</div>
+    <div>📅 ${formatISOToFR(trip.date)}</div>
     <div>⏰ ${trip.heure_depart} - ${trip.heure_arrivee}</div>
     </div>
     </div>
     <div class="col row row-cols-2 row-cols-lg-1 order-lg-3 ps-3 py-2 mb-auto my-lg-auto text-center fs-5">
     <div class="col pe-0">${trip.credit} <i class="bi bi-coin"></i></div>
-    <div class="col"><i class="bi bi-people-fill d-lg-none"></i>${trip.places_disponibles} <span class="d-none d-lg-inline">places disponibles</span></div>
+    <div class="col"><i class="bi bi-people-fill d-lg-none"></i>${
+        trip.places_disponibles
+    } <span class="d-none d-lg-inline">places disponibles</span></div>
     </div>
     <div class="col order-lg-4 px-4 py-2 text-center my-auto">
     <a href="/details" class="${classEcoBtn}">+ détails</a>
@@ -119,7 +121,7 @@ function afficherNombreResultat(nombreResultats, destination) {
 }
 
 // Fonction pour la recherche de trajets
-function rechercheTrajets(trips, villeDepart, villeArrivee) {
+function rechercheTrajets(trips, villeDepart, villeArrivee, dateTrajet) {
     // Convertir les arguments en minuscule
     villeDepart = villeDepart.toLowerCase();
     villeArrivee = villeArrivee.toLowerCase();
@@ -128,17 +130,27 @@ function rechercheTrajets(trips, villeDepart, villeArrivee) {
     const trajetsRecherche = trips.filter(
         (trip) =>
             (!villeDepart || trip.ville_depart.toLowerCase() === villeDepart) &&
-            (!villeArrivee || trip.ville_arrivee.toLowerCase() === villeArrivee)
+            (!villeArrivee || trip.ville_arrivee.toLowerCase() === villeArrivee) &&
+            (!dateTrajet || trip.date === dateTrajet)
     );
 
     return trajetsRecherche;
 }
 
 // Fonction qui écrit le contenu du sessionStorage dans les input
-function storageToInput(inputDepart, inputArrivee) {
+function storageToInput(inputDepart, inputArrivee, inputDate) {
     const depart = sessionStorage.getItem("depart");
     const arrivee = sessionStorage.getItem("arrivee");
+    const dateTrajet = sessionStorage.getItem("date");
 
     if (depart) inputDepart.value = depart;
     if (arrivee) inputArrivee.value = arrivee;
+    if (dateTrajet) inputDate.value = dateTrajet;
+}
+
+// Fonction pour convertir la date ISO en date FR affichable
+function formatISOToFR(iso) {
+    if (!iso) return "";
+    const [y, m, d] = iso.split("-");
+    return `${d}/${m}/${y}`;
 }
