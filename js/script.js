@@ -157,8 +157,16 @@ function formatISOToFR(iso) {
 
 // Fonctions pour gérer la mise en cache des tableaux de covoiturages
 function setTripsInCache(trips) {
-    sessionStorage.setItem("trips", trips);
+    sessionStorage.setItem("trips", JSON.stringify(trips));
 }
 function getTripsInCache() {
-    return sessionStorage.getItem("trips");
+    const trips = sessionStorage.getItem("trips");
+    return JSON.parse(trips);
+}
+
+// Fonction pour convertir chaine de caractère en heure
+function texteToHeures(texte) {
+    if (!texte) return "";
+    const [heures, minutes] = texte.split(":");
+    return Number(heures) + Number(minutes) / 60;
 }

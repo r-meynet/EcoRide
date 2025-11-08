@@ -67,7 +67,7 @@
                                         class="form-range"
                                         min="0"
                                         max="100"
-                                        value="50"
+                                        value="100"
                                         id="prixMaxSide" />
                                     <output
                                         for="prixMaxSide"
@@ -78,14 +78,15 @@
                             </div>
 
                             <div>
-                                <label class="form-label fw-semibold">Durée maximum (min)</label>
+                                <label class="form-label fw-semibold">Durée maximum (h)</label>
                                 <div class="text-center">
                                     <input
                                         type="range"
                                         class="form-range"
                                         min="0"
-                                        max="100"
-                                        value="50"
+                                        max="10"
+                                        step="0.5"
+                                        value="10"
                                         id="dureeMaxSide" />
                                     <output
                                         for="dureeMaxSide"
@@ -101,7 +102,10 @@
                                 </button>
                             </div>
                             <div class="text-center my-auto">
-                                <button class="btn btn-primary" id="btnFiltreSide" data-filtre="side">
+                                <button
+                                    class="btn btn-primary"
+                                    id="btnFiltreSide"
+                                    data-filtre="side">
                                     Filtrer les trajets
                                 </button>
                             </div>
@@ -178,7 +182,7 @@
                                     class="form-range"
                                     min="0"
                                     max="100"
-                                    value="50"
+                                    value="100"
                                     id="prixMaxModal" />
                                 <output
                                     for="prixMaxModal"
@@ -189,14 +193,15 @@
                         </div>
 
                         <div>
-                            <label class="form-label fw-semibold">Durée maximum (min)</label>
+                            <label class="form-label fw-semibold">Durée maximum (h)</label>
                             <div class="text-center">
                                 <input
                                     type="range"
                                     class="form-range"
                                     min="0"
-                                    max="100"
-                                    value="50"
+                                    max="10"
+                                    step="0.5"
+                                    value="10"
                                     id="dureeMaxModal" />
                                 <output
                                     for="dureeMaxModal"
@@ -213,7 +218,9 @@
                     Close
                 </button>
                 <button type="button" class="btn btn-outline-secondary">Réinitialiser</button>
-                <button type="button" class="btn btn-primary" data-filtre="modal">Filtrer les trajets</button>
+                <button type="button" class="btn btn-primary" data-filtre="modal">
+                    Filtrer les trajets
+                </button>
             </div>
         </div>
     </div>

@@ -71,10 +71,10 @@ rangeInputPrixSide.addEventListener("input", function () {
 const rangeInputDureeSide = document.getElementById("dureeMaxSide");
 const rangeOutputDureeSide = document.getElementById("dureeMaxSideOutput");
 
-rangeOutputDureeSide.textContent = rangeInputDureeSide.value + " minutes";
+rangeOutputDureeSide.textContent = rangeInputDureeSide.value + " heures";
 
 rangeInputDureeSide.addEventListener("input", function () {
-    rangeOutputDureeSide.textContent = `${this.value} minutes`;
+    rangeOutputDureeSide.textContent = `${this.value} heures`;
 });
 
 // Dans la modale
@@ -90,10 +90,10 @@ rangeInputPrixModal.addEventListener("input", function () {
 const rangeInputDureeModal = document.getElementById("dureeMaxModal");
 const rangeOutputDureeModal = document.getElementById("dureeMaxModalOutput");
 
-rangeOutputDureeModal.textContent = rangeInputDureeSide.value + " minutes";
+rangeOutputDureeModal.textContent = rangeInputDureeSide.value + " heures";
 
 rangeInputDureeModal.addEventListener("input", function () {
-    rangeOutputDureeModal.textContent = `${this.value} minutes`;
+    rangeOutputDureeModal.textContent = `${this.value} heures`;
 });
 
 // #
@@ -106,7 +106,9 @@ btnFiltreSide.addEventListener("click", (e) => {
 
     const tripsActuels = getTripsInCache();
 
-    filtrerCovoiturages(tripsActuels, filtres);
+    const nouveau = filtrerCovoiturages(tripsActuels, filtres);
+
+    affichageTrajets(nouveau);
 });
 
 const btnResetFiltreSide = document.getElementById("btnViderFiltreSide");
@@ -114,7 +116,6 @@ const btnResetFiltreSide = document.getElementById("btnViderFiltreSide");
 btnResetFiltreSide.addEventListener("click", (e) => {
     e.preventDefault();
     resetFiltre();
-    const tripsActuels = getTripsInCache();
 });
 
 // Création des fonctions pour filtrer
@@ -123,33 +124,39 @@ function getFiltre(idBouton) {
     const bouton = document.getElementById(idBouton);
 
     // Suivant où a été effectué le filtre, on définit un suffixe de variables
-    const suffixOrigin = bouton.dataset.filtre === "side" ? "Side" : "Modal";
-    const suffixDestination = bouton.dataset.filtre === "side" ? "Modal" : "Side";
+    const suffix = bouton.dataset.filtre === "side" ? "Side" : "Modal";
 
-    // On récupère les valeurs des input dans la section utilisée
-    const inputEco = document.getElementById(`switchCheckEco${suffixOrigin}`);
-    const inputPrix = document.getElementById(`prixMax${suffixOrigin}`);
-    const inputDuree = document.getElementById(`dureeMax${suffixOrigin}`);
+    // On récupère les inputs dans la section utilisée
+    const inputEco = document.getElementById(`switchCheckEco${suffix}`);
+    const inputPrix = document.getElementById(`prixMax${suffix}`);
+    const inputDuree = document.getElementById(`dureeMax${suffix}`);
 
-    // On met à jour également l'autre section avec les même valeurs
-    const inputEcoDestination = document.getElementById(`switchCheckEco${suffixDestination}`);
-    const inputPrixDestination = document.getElementById(`prixMax${suffixDestination}`);
-    const inputDureeDestination = document.getElementById(`dureeMax${suffixDestination}`);
-
-    inputEcoDestination.checked = inputEco.checked;
-    inputPrixDestination.value = inputPrix.value;
-    inputDureeDestination.value = inputDuree.value;
-
-    // On met à jour les output de range
-    const prixOutputDestination = document.getElementById(`prixMax${suffixDestination}Output`);
-    const dureeOutputDestination = document.getElementById(`dureeMax${suffixDestination}Output`);
-    prixOutputDestination.textContent = `${inputPrixDestination.value} crédits`;
-    dureeOutputDestination.textContent = `${inputDureeDestination.value} minutes`;
+    // On récupère la valeur des inputs
+    const valueEco = inputEco.checked;
+    const valuePrix = Number(inputPrix.value);
+    const valueDuree = Number(inputDuree.value);
 
     // Pour finir, on retourne un objet avec les 3 statuts de filtres
-    return { inputEco, inputPrix, inputDuree };
+    return { valueEco, valuePrix, valueDuree };
 }
 
 function resetFiltre() {}
 
-function filtrerCovoiturages(trips, filtres) {}
+function filtrerCovoiturages(trips, filtres) {
+    const isEco = filtres.valueEco;
+    const maxPrix = Number(filtres.valuePrix);
+    const maxDuree = Number(filtres.valueDuree);
+
+    const tripsFiltre = trips.filter(
+        (trip) =>
+            Number(trip.credit) <= maxPrix &&
+            texteToHeures(trip.heure_arrivee) - texteToHeures(trip.heure_depart) <= maxDuree
+    );
+
+    if (isEco) {
+        const tripsFiltreEco = tripsFiltre.filter((trip) => trip.eco);
+        return tripsFiltreEco;
+    }
+
+    return tripsFiltre;
+}
