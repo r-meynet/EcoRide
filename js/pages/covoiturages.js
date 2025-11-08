@@ -31,6 +31,10 @@ const btnViderRecherche = document.getElementById("btnViderRecherche");
 // Recherche
 btnRechercherCovoit.addEventListener("click", (e) => {
     e.preventDefault();
+    // On supprime les filtres avant
+    resetFiltre("btnViderFiltreSide");
+    resetFiltre("btnViderFiltreModal");
+
     // Récupérer les valeurs des input
     const villeDepart = inputDepartCovoit.value;
     const villeArrivee = inputArriveeCovoit.value;
@@ -53,7 +57,11 @@ btnViderRecherche.addEventListener("click", (e) => {
     inputArriveeCovoit.value = "";
     inputDateCovoit.value = "";
 
+    // On affiche les trajets de base
     affichageTrajets(tripBrut);
+
+    // On met en cache les trajets de base
+    setTripsInCache(tripBrut);
 });
 
 // #
@@ -97,7 +105,8 @@ rangeInputDureeModal.addEventListener("input", function () {
 });
 
 // #
-// Gestion des filtres
+// Gestion des filtres side
+// Bouton pour filtrer side
 const btnFiltreSide = document.getElementById("btnFiltreSide");
 
 btnFiltreSide.addEventListener("click", (e) => {
@@ -111,11 +120,38 @@ btnFiltreSide.addEventListener("click", (e) => {
     affichageTrajets(nouveau);
 });
 
+// Bouton pour réinitialiser les filtres side
 const btnResetFiltreSide = document.getElementById("btnViderFiltreSide");
 
 btnResetFiltreSide.addEventListener("click", (e) => {
     e.preventDefault();
-    resetFiltre();
+    resetFiltre("btnViderFiltreSide");
+    const tripsActuels = getTripsInCache();
+    affichageTrajets(tripsActuels);
+});
+
+// Gestion des filtres modal
+// Bouton pour filtrer modal
+const btnFiltreModal = document.getElementById("btnFiltreModal");
+
+btnFiltreModal.addEventListener("click", (e) => {
+    e.preventDefault();
+    const filtres = getFiltre("btnFiltreModal");
+
+    const tripsActuels = getTripsInCache();
+
+    const nouveau = filtrerCovoiturages(tripsActuels, filtres);
+
+    affichageTrajets(nouveau);
+});
+
+// Bouton pour réinitialiser les filtres modal
+const btnResetFiltreModal = document.getElementById("btnViderFiltreModal");
+
+btnResetFiltreModal.addEventListener("click", (e) => {
+    resetFiltre("btnViderFiltreModal");
+    const tripsActuels = getTripsInCache();
+    affichageTrajets(tripsActuels);
 });
 
 // Création des fonctions pour filtrer
@@ -140,7 +176,33 @@ function getFiltre(idBouton) {
     return { valueEco, valuePrix, valueDuree };
 }
 
-function resetFiltre() {}
+function resetFiltre(idBouton) {
+    // On récupère le bouton qui a été cliqué
+    const bouton = document.getElementById(idBouton);
+
+    // Suivant où a été effectué le filtre, on définit un suffixe de variables
+    const suffix = bouton.dataset.filtre === "side" ? "Side" : "Modal";
+
+    // On récupère les inputs dans la section utilisée
+    const inputEco = document.getElementById(`switchCheckEco${suffix}`);
+    const inputPrix = document.getElementById(`prixMax${suffix}`);
+    const inputDuree = document.getElementById(`dureeMax${suffix}`);
+
+    // On remet les filtres à leurs valeurs d'origine
+    const valueEco = !inputEco.checked;
+    const valuePrix = inputPrix.defaultValue;
+    const valueDuree = inputDuree.defaultValue;
+
+    // On remet le formulaire à zéro
+    document.getElementById(`formulaire${suffix}`).reset();
+    const outputPrix = document.getElementById(`prixMax${suffix}Output`);
+    const outputDuree = document.getElementById(`dureeMax${suffix}Output`);
+    outputPrix.value = `${valuePrix} crédits`;
+    outputDuree.value = `${valueDuree} heures`;
+
+    // Pour finir, on retourne un objet avec les 3 statuts de filtres
+    return { valueEco, valuePrix, valueDuree };
+}
 
 function filtrerCovoiturages(trips, filtres) {
     const isEco = filtres.valueEco;
