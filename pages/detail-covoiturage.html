@@ -1,0 +1,100 @@
+<h1 class="text-center text-light my-5">Détails du covoiturage</h1>
+
+<div class="container">
+    <div class="card mb-4 border-3 border-primary shadow col-lg-8 mx-lg-auto" id="1">
+        <div class="row row-cols-3 p-2">
+            <div class="col-3 align-content-center text-center">
+                <img
+                    id="profile-picture"
+                    src="../images/Avatars/profile-pic (1).jpg"
+                    class="profile-picture-lg"
+                    alt="Photo de profil de Noémie" />
+            </div>
+            <div class="col-6 d-flex flex-column">
+                <div>
+                    <h6 id="pseudo" class="fs-5">Noémie</h6>
+                </div>
+                <div class="rating" data-rating="4.8"></div>
+                <div>
+                    <a href="#">voir les avis</a>
+                </div>
+            </div>
+            <div id="eco-label" class="col-3 fs-5 text-primary mb-auto text-end pe-3 ps-0">
+                eco
+                <i class="bi bi-leaf-fill"></i>
+            </div>
+        </div>
+        <div class="d-flex flex-column text-center my-3">
+            <div class="col-12 fs-5">
+                <i id="place-dispo-number" class="bi bi-people-fill d-lg-none"></i>
+                1
+                <span class="place-dispo-text">place disponible</span>
+            </div>
+            <div class="col-12 fs-5">
+                <div>
+                    <span id="credit-suffisant" class="text-primary">
+                        <span class="credit-cout">22</span>
+                        <span id="credit-solde">/ 150</span>
+                    </span>
+                    <i class="bi bi-coin"></i>
+                    crédits
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column text-center my-3">
+            <div>
+                <h2>
+                    🚗
+                    <span id="ville-depart">Paris</span>
+                    →
+                    <span id="ville-arrivee">Lyon</span>
+                </h2>
+            </div>
+            <div class="fs-4">
+                📅
+                <span id="date">07/11/2025</span>
+            </div>
+            <div class="fs-4">
+                ⏰
+                <span id="heure-depart">08:00</span>
+                -
+                <span id="heure-arrivee">13:10</span>
+            </div>
+        </div>
+        <div class="p-2 my-2 col-lg-6 mx-lg-auto">
+            <div>
+                <h5>Véhicule :</h5>
+            </div>
+            <div class="container card">
+                <div class="my-1">
+                    Marque :
+                    <span id="marque-vehicule">HYUNDAI</span>
+                    <span id="modele-vehicule">- Kona</span>
+                    <span id="annee-vehicule">- 2023</span>
+                </div>
+                <div class="my-1">
+                    Energie :
+                    <span id="energie-vehicule">Electrique</span>
+                </div>
+            </div>
+        </div>
+        <div class="p-2 mt-2 col-lg-6 mx-lg-auto">
+            <div>
+                <h5>Préférences du conducteur :</h5>
+            </div>
+            <div id="preference" class="preferences card my-1 container">
+                Animaux acceptés
+                <br />
+                Non fumeur obligatoire
+                <br />
+            </div>
+        </div>
+        <div class="text-center my-auto">
+            <a href="#" class="btn btn-primary my-2">
+                Participer à ce trajet -
+                <span class="credit-cout">22</span>
+                crédits
+            </a>
+        </div>
+    </div>
+</div>

@@ -62,6 +62,9 @@ function affichageTrajets(trips) {
 
     // Afficher le nombre de résultat en haut du containerr
     afficherNombreResultat(nombreTrajets, htmlResultats);
+
+    // Récupérer la liste des boutons détail
+    getListBtnDetail();
 }
 
 // Fonction pour créer une carte trajet
@@ -87,7 +90,7 @@ function creationCarteTrajet(trip, destination) {
     <div class="row row-cols-2 row-cols-lg-4 gx-3 align-items-center">
     <div class="col d-flex flex-column order-lg-1 px-4 py-2">
     <div class="d-flex flex-row">
-    <img src="${trip.photo}" class="profile-picture" alt="Photo de profil de ${trip.pseudo}" />
+    <img src="${trip.photo}" class="profile-picture-sm" alt="Photo de profil de ${trip.pseudo}" />
     <h6 class="fs-5 ps-2">${trip.pseudo}</h6>
     </div>
     <div class="rating" data-rating="${trip.note}"></div>
@@ -106,7 +109,9 @@ function creationCarteTrajet(trip, destination) {
     } <span class="d-none d-lg-inline">places disponibles</span></div>
     </div>
     <div class="col order-lg-4 px-4 py-2 text-center my-auto">
-    <a href="/details" class="${classEcoBtn}">+ détails</a>
+    <a href="/details" class="${classEcoBtn} detail-covoiturage" data-tripId="${
+        trip.id
+    }">+ détails</a>
     <div class="${classEcoLogo}">eco <i class="bi bi-leaf-fill"></i></div>
     </div>
     </div>

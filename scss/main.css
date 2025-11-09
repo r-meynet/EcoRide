@@ -12024,7 +12024,7 @@ body {
   background-image: radial-gradient(circle at 50% 40%, rgba(46, 125, 50, 0.08) 0%, rgba(46, 125, 50, 0.03) 35%, rgba(46, 125, 50, 0) 70%);
 }
 
-.profile-picture {
+.profile-picture-sm {
   height: 48px;
   width: 48px;
   border-radius: 999px;
@@ -12032,4 +12032,18 @@ body {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+
+.profile-picture-lg {
+  height: 70px;
+  width: 70px;
+  border-radius: 999px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.preferences {
+  min-height: 150px;
 }/*# sourceMappingURL=main.css.map */
