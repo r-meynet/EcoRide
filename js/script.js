@@ -52,7 +52,10 @@ function affichageTrajets(trips) {
 
         // Affichage des étoiles d'avis
         createStars();
-    } else {
+    } else if (isEmpty("recherche"))
+        container.innerHTML =
+            '<h4 class="text-center">Veuillez remplir des informations de recherche</h4>';
+    else {
         container.innerHTML =
             '<h4 class="text-center">Aucun trajet ne correspond aux critères de recherche</h4>';
     }
@@ -136,6 +139,11 @@ function rechercheTrajets(trips, villeDepart, villeArrivee, dateTrajet) {
             (!dateTrajet || trip.date === dateTrajet)
     );
 
+    // Si aucun input de recherche n'est renseigné, rien à afficher
+    if (villeDepart == "" && villeArrivee == "" && dateTrajet == "") {
+        return [];
+    }
+
     return trajetsRecherche;
 }
 
@@ -171,4 +179,23 @@ function texteToHeures(texte) {
     if (!texte) return "";
     const [heures, minutes] = texte.split(":");
     return Number(heures) + Number(minutes) / 60;
+}
+
+// Fonction booléenne qui vérifie si les champs de recherche sont remplis
+function isEmpty(idForm) {
+    const formulaire = document.getElementById(idForm);
+    const inputs = formulaire.querySelectorAll("input");
+    let compteur = 0;
+
+    inputs.forEach((input) => {
+        if (input.value.trim() !== "") {
+            compteur += 1;
+        }
+    });
+
+    if (compteur == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
