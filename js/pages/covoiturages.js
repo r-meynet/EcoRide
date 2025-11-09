@@ -62,6 +62,10 @@ btnViderRecherche.addEventListener("click", (e) => {
 
     // On met en cache les trajets de base
     setTripsInCache(tripBrut);
+
+    // On réinitialise les filtres
+    resetFiltre("btnViderFiltreSide");
+    resetFiltre("btnViderFiltreModal");
 });
 
 // #
@@ -85,6 +89,15 @@ rangeInputDureeSide.addEventListener("input", function () {
     rangeOutputDureeSide.textContent = `${this.value} heures`;
 });
 
+const rangeInputNoteSide = document.getElementById("noteMinSide");
+const rangeOutputNoteSide = document.getElementById("noteMinSideOutput");
+
+rangeOutputNoteSide.textContent = rangeInputNoteSide.value + " / 5";
+
+rangeInputNoteSide.addEventListener("input", function () {
+    rangeOutputNoteSide.textContent = `${this.value} / 5`;
+});
+
 // Dans la modale
 const rangeInputPrixModal = document.getElementById("prixMaxModal");
 const rangeOutputPrixModal = document.getElementById("prixMaxModalOutput");
@@ -102,6 +115,15 @@ rangeOutputDureeModal.textContent = rangeInputDureeSide.value + " heures";
 
 rangeInputDureeModal.addEventListener("input", function () {
     rangeOutputDureeModal.textContent = `${this.value} heures`;
+});
+
+const rangeInputNoteModal = document.getElementById("noteMinModal");
+const rangeOutputNoteModal = document.getElementById("noteMinModalOutput");
+
+rangeOutputNoteModal.textContent = rangeInputNoteSide.value + " / 5";
+
+rangeInputNoteModal.addEventListener("input", function () {
+    rangeOutputNoteModal.textContent = `${this.value} / 5`;
 });
 
 // #
@@ -166,53 +188,31 @@ function getFiltre(idBouton) {
     const inputEco = document.getElementById(`switchCheckEco${suffix}`);
     const inputPrix = document.getElementById(`prixMax${suffix}`);
     const inputDuree = document.getElementById(`dureeMax${suffix}`);
+    const inputNote = document.getElementById(`noteMin${suffix}`);
 
     // On récupère la valeur des inputs
     const valueEco = inputEco.checked;
     const valuePrix = Number(inputPrix.value);
     const valueDuree = Number(inputDuree.value);
+    const valueNote = Number(inputNote.value);
 
     // Pour finir, on retourne un objet avec les 3 statuts de filtres
-    return { valueEco, valuePrix, valueDuree };
+    return { valueEco, valuePrix, valueDuree, valueNote };
 }
 
-function resetFiltre(idBouton) {
-    // On récupère le bouton qui a été cliqué
-    const bouton = document.getElementById(idBouton);
-
-    // Suivant où a été effectué le filtre, on définit un suffixe de variables
-    const suffix = bouton.dataset.filtre === "side" ? "Side" : "Modal";
-
-    // On récupère les inputs dans la section utilisée
-    const inputEco = document.getElementById(`switchCheckEco${suffix}`);
-    const inputPrix = document.getElementById(`prixMax${suffix}`);
-    const inputDuree = document.getElementById(`dureeMax${suffix}`);
-
-    // On remet les filtres à leurs valeurs d'origine
-    const valueEco = !inputEco.checked;
-    const valuePrix = inputPrix.defaultValue;
-    const valueDuree = inputDuree.defaultValue;
-
-    // On remet le formulaire à zéro
-    document.getElementById(`formulaire${suffix}`).reset();
-    const outputPrix = document.getElementById(`prixMax${suffix}Output`);
-    const outputDuree = document.getElementById(`dureeMax${suffix}Output`);
-    outputPrix.value = `${valuePrix} crédits`;
-    outputDuree.value = `${valueDuree} heures`;
-
-    // Pour finir, on retourne un objet avec les 3 statuts de filtres
-    return { valueEco, valuePrix, valueDuree };
-}
+function resetFiltre() {}
 
 function filtrerCovoiturages(trips, filtres) {
     const isEco = filtres.valueEco;
     const maxPrix = Number(filtres.valuePrix);
     const maxDuree = Number(filtres.valueDuree);
+    const minNote = Number(filtres.valueNote);
 
     const tripsFiltre = trips.filter(
         (trip) =>
             Number(trip.credit) <= maxPrix &&
-            texteToHeures(trip.heure_arrivee) - texteToHeures(trip.heure_depart) <= maxDuree
+            texteToHeures(trip.heure_arrivee) - texteToHeures(trip.heure_depart) <= maxDuree &&
+            Number(trip.note) >= minNote
     );
 
     if (isEco) {
