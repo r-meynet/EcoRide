@@ -2,7 +2,7 @@
 function createStars() {
     document.querySelectorAll(".rating").forEach((el) => {
         const rating = parseFloat(el.getAttribute("data-rating"));
-        let html = "";
+        let html = '<span class="text-primary">';
 
         for (let i = 1; i <= 5; i++) {
             if (rating >= i) {
@@ -13,6 +13,8 @@ function createStars() {
                 html += '<i class="bi bi-star"></i>';
             }
         }
+
+        html += `</span> ${rating} / 5`;
 
         el.innerHTML = html;
     });
@@ -85,7 +87,7 @@ function creationCarteTrajet(trip, destination) {
     <img src="${trip.photo}" class="profile-picture" alt="Photo de profil de ${trip.pseudo}" />
     <h6 class="fs-5 ps-2">${trip.pseudo}</h6>
     </div>
-    <div class="text-primary rating" data-rating="${trip.note}"></div>
+    <div class="rating" data-rating="${trip.note}"></div>
     </div>
     <div class="col order-lg-2 ps-3 py-2">
     <div>🚗 ${trip.ville_depart} → ${trip.ville_arrivee}</div>
