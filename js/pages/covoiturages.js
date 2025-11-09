@@ -58,7 +58,7 @@ btnViderRecherche.addEventListener("click", (e) => {
     inputDateCovoit.value = "";
 
     // On affiche les trajets de base
-    affichageTrajets(tripBrut);
+    affichageTrajets([]);
 
     // On met en cache les trajets de base
     setTripsInCache(tripBrut);
