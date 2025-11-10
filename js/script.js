@@ -74,7 +74,7 @@ function creationCarteTrajet(trip, destination) {
     let classEcoBtn = "";
     let classEcoLogo = "";
 
-    if (trip.eco) {
+    if (trip.energie_vehicule == "Electrique") {
         classEcoCard = "card mb-4 border-3 border-primary shadow";
         classEcoBtn = "btn btn-primary";
         classEcoLogo = "fs-5 text-primary";

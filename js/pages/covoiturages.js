@@ -8,20 +8,20 @@ const tripTri = rechercheTrajets(
 );
 
 // #
-// Affichage des covoiturages disponibles
-affichageTrajets(tripTri);
-
-// #
-// Mise en cache du tableau de covoiturages
-setTripsInCache(tripTri);
-
-// #
 // Affichage des critères de recherche dans les inputs
 const inputDepartCovoit = document.getElementById("villeDepartCovoit");
 const inputArriveeCovoit = document.getElementById("villeArriveeCovoit");
 const inputDateCovoit = document.getElementById("dateCovoit");
 
 storageToInput(inputDepartCovoit, inputArriveeCovoit, inputDateCovoit);
+
+// #
+// Affichage des covoiturages disponibles
+affichageTrajets(tripTri);
+
+// #
+// Mise en cache du tableau de covoiturages
+setTripsInCache(tripTri);
 
 // #
 // Evénements
