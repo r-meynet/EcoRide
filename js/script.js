@@ -62,6 +62,9 @@ function affichageTrajets(trips) {
 
     // Afficher le nombre de résultat en haut du containerr
     afficherNombreResultat(nombreTrajets, htmlResultats);
+
+    // Récupérer la liste des boutons détail
+    getListBtnDetail();
 }
 
 // Fonction pour créer une carte trajet
@@ -71,7 +74,7 @@ function creationCarteTrajet(trip, destination) {
     let classEcoBtn = "";
     let classEcoLogo = "";
 
-    if (trip.eco) {
+    if (trip.energie_vehicule == "Electrique") {
         classEcoCard = "card mb-4 border-3 border-primary shadow";
         classEcoBtn = "btn btn-primary";
         classEcoLogo = "fs-5 text-primary";
@@ -87,7 +90,7 @@ function creationCarteTrajet(trip, destination) {
     <div class="row row-cols-2 row-cols-lg-4 gx-3 align-items-center">
     <div class="col d-flex flex-column order-lg-1 px-4 py-2">
     <div class="d-flex flex-row">
-    <img src="${trip.photo}" class="profile-picture" alt="Photo de profil de ${trip.pseudo}" />
+    <img src="${trip.photo}" class="profile-picture-sm" alt="Photo de profil de ${trip.pseudo}" />
     <h6 class="fs-5 ps-2">${trip.pseudo}</h6>
     </div>
     <div class="rating" data-rating="${trip.note}"></div>
@@ -101,12 +104,14 @@ function creationCarteTrajet(trip, destination) {
     </div>
     <div class="col row row-cols-2 row-cols-lg-1 order-lg-3 ps-3 py-2 mb-auto my-lg-auto text-center fs-5">
     <div class="col pe-0">${trip.credit} <i class="bi bi-coin"></i></div>
-    <div class="col"><i class="bi bi-people-fill d-lg-none"></i>${
+    <div class="col"><i class="bi bi-people-fill d-lg-none"></i> ${
         trip.places_disponibles
     } <span class="d-none d-lg-inline">places disponibles</span></div>
     </div>
     <div class="col order-lg-4 px-4 py-2 text-center my-auto">
-    <a href="/details" class="${classEcoBtn}">+ détails</a>
+    <a href="/details" class="${classEcoBtn} detail-covoiturage" data-tripId="${
+        trip.id
+    }">+ détails</a>
     <div class="${classEcoLogo}">eco <i class="bi bi-leaf-fill"></i></div>
     </div>
     </div>

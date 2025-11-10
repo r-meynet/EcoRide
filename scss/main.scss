@@ -50,10 +50,23 @@ body {
   );
 }
 
-.profile-picture {
+.profile-picture-sm {
     height: 48px;
     width: 48px;
     border-radius: 999px;
     object-fit: cover;
     object-position: center;
+}
+
+.profile-picture-lg {
+    height: 70px;
+    width: 70px;
+    border-radius: 999px;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+.preferences {
+    min-height: 150px;
 }

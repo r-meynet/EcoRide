@@ -8,20 +8,20 @@ const tripTri = rechercheTrajets(
 );
 
 // #
-// Affichage des covoiturages disponibles
-affichageTrajets(tripTri);
-
-// #
-// Mise en cache du tableau de covoiturages
-setTripsInCache(tripTri);
-
-// #
 // Affichage des critères de recherche dans les inputs
 const inputDepartCovoit = document.getElementById("villeDepartCovoit");
 const inputArriveeCovoit = document.getElementById("villeArriveeCovoit");
 const inputDateCovoit = document.getElementById("dateCovoit");
 
 storageToInput(inputDepartCovoit, inputArriveeCovoit, inputDateCovoit);
+
+// #
+// Affichage des covoiturages disponibles
+affichageTrajets(tripTri);
+
+// #
+// Mise en cache du tableau de covoiturages
+setTripsInCache(tripTri);
 
 // #
 // Evénements
@@ -222,3 +222,23 @@ function filtrerCovoiturages(trips, filtres) {
 
     return tripsFiltre;
 }
+
+// #
+// Gestion du clic sur le bouton détails
+// Fonction qui récupère la liste des boutons détails
+function getListBtnDetail() {
+    const btnDetail = document.querySelectorAll("a.detail-covoiturage");
+    return btnDetail;
+}
+
+// Evénement qui va écouter le clic sur un bouton détail et stocker l'id du trajet sélectionné dans le cache
+const containerListeTrajets = document.getElementById("affichage-trajets");
+// On écoute sur le container global car le DOM n'est pas chargé
+containerListeTrajets.addEventListener("click", (e) => {
+    const btn = e.target.closest("a.detail-covoiturage"); // On récupère le parent si le click est à l'intérieur
+    if (!btn) return; // On sort si le click n'est pas sur un buton détails
+
+    // On récupère l'id du trajet pour la stocker dans le cache
+    const tripId = btn.dataset.tripid;
+    sessionStorage.setItem("tripId", tripId);
+});
