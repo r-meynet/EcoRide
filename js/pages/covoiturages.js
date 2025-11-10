@@ -7,7 +7,6 @@ const tripTri = rechercheTrajets(
     sessionStorage.getItem("date")
 );
 
-// #
 // Affichage des critères de recherche dans les inputs
 const inputDepartCovoit = document.getElementById("villeDepartCovoit");
 const inputArriveeCovoit = document.getElementById("villeArriveeCovoit");
@@ -23,12 +22,139 @@ affichageTrajets(tripTri);
 // Mise en cache du tableau de covoiturages
 setTripsInCache(tripTri);
 
-// #
-// Evénements
-const btnRechercherCovoit = document.getElementById("btnRechercherCovoit");
-const btnViderRecherche = document.getElementById("btnViderRecherche");
+//
+//
+//
+//
+//
+//
+// START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AFFICHAGE TRAJETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// Recherche
+// Fonction qui va afficher les trajets
+function affichageTrajets(trips) {
+    // Variables pour l'affichage sur la page
+    const container = document.getElementById("affichage-trajets");
+    const htmlResultats = document.getElementById("nombreResultats");
+    let nombreTrajets = 0;
+
+    // On vide le contenu existant
+    container.innerHTML = "";
+
+    // Affichage si trips contient des éléments
+    if (trips.length > 0) {
+        // Boucle parmis tous les trajets
+        trips.forEach((trip) => {
+            // Création de la carte trajet si des places sont toujours disponibles
+            if (trip.places_disponibles > 0) {
+                creationCarteTrajet(trip, container);
+                nombreTrajets += 1;
+            }
+        });
+
+        // Affichage des étoiles d'avis
+        createStars();
+    } else if (isEmpty("recherche"))
+        container.innerHTML =
+            '<h4 class="text-center">Veuillez remplir des informations de recherche</h4>';
+    else {
+        container.innerHTML =
+            '<h4 class="text-center">Aucun trajet ne correspond aux critères de recherche</h4>';
+    }
+
+    // Afficher le nombre de résultat en haut du containerr
+    afficherNombreResultat(nombreTrajets, htmlResultats);
+
+    // Récupérer la liste des boutons détail
+    getListBtnDetail();
+}
+
+// Fonction d'affichage du nombre de résultats
+function afficherNombreResultat(nombreResultats, destination) {
+    if (nombreResultats <= 1) {
+        destination.innerHTML = `${nombreResultats} résultat`;
+    } else {
+        destination.innerHTML = `${nombreResultats} résultats`;
+    }
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AFFICHAGE TRAJETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END
+//
+//
+//
+//
+//
+// START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CREATION CARTE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Fonction pour créer une carte trajet
+function creationCarteTrajet(trip, destination) {
+    // Gestion de l'affichage d'un trajet écologique
+    let classEcoCard = "";
+    let classEcoBtn = "";
+    let classEcoLogo = "";
+
+    if (trip.energie_vehicule == "Electrique") {
+        classEcoCard = "card mb-4 border-3 border-primary shadow";
+        classEcoBtn = "btn btn-primary";
+        classEcoLogo = "fs-5 text-primary";
+    } else {
+        classEcoCard = "card mb-4 border-0 shadow";
+        classEcoBtn = "btn btn-outline-secondary";
+        classEcoLogo = "d-none";
+    }
+
+    // Contenu de la carte
+    const cardTrajet = `
+    <div class="${classEcoCard}" id="${trip.id}">
+    <div class="row row-cols-2 row-cols-lg-4 gx-3 align-items-center">
+    <div class="col d-flex flex-column order-lg-1 px-4 py-2">
+    <div class="d-flex flex-row">
+    <img src="${trip.photo}" class="profile-picture-sm" alt="Photo de profil de ${trip.pseudo}" />
+    <h6 class="fs-5 ps-2">${trip.pseudo}</h6>
+    </div>
+    <div class="rating" data-rating="${trip.note}"></div>
+    </div>
+    <div class="col order-lg-2 ps-3 py-2">
+    <div>🚗 ${trip.ville_depart} → ${trip.ville_arrivee}</div>
+    <div>
+    <div>📅 ${formatISOToFR(trip.date)}</div>
+    <div>⏰ ${trip.heure_depart} - ${trip.heure_arrivee}</div>
+    </div>
+    </div>
+    <div class="col row row-cols-2 row-cols-lg-1 order-lg-3 ps-3 py-2 mb-auto my-lg-auto text-center fs-5">
+    <div class="col pe-0">${trip.credit} <i class="bi bi-coin"></i></div>
+    <div class="col"><i class="bi bi-people-fill d-lg-none"></i>${
+        trip.places_disponibles
+    } <span class="d-none d-lg-inline">places disponibles</span></div>
+    </div>
+    <div class="col order-lg-4 px-4 py-2 text-center my-auto">
+    <a href="/details" class="${classEcoBtn} detail-covoiturage" data-tripId="${
+        trip.id
+    }">+ détails</a>
+    <div class="${classEcoLogo}">eco <i class="bi bi-leaf-fill"></i></div>
+    </div>
+    </div>
+    </div>
+    `;
+
+    destination.innerHTML += cardTrajet;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CREATION CARTE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END
+//
+//
+//
+//
+//
+// START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EVENEMENTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EVENT RECHERCHE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const btnRechercherCovoit = document.getElementById("btnRechercherCovoit");
+
 btnRechercherCovoit.addEventListener("click", (e) => {
     e.preventDefault();
     // On supprime les filtres avant
@@ -50,7 +176,9 @@ btnRechercherCovoit.addEventListener("click", (e) => {
     setTripsInCache(voyagesTries);
 });
 
-// Réinitialiser la recherche
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EVENT RESET ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const btnViderRecherche = document.getElementById("btnViderRecherche");
+
 btnViderRecherche.addEventListener("click", (e) => {
     e.preventDefault();
     inputDepartCovoit.value = "";
@@ -68,9 +196,64 @@ btnViderRecherche.addEventListener("click", (e) => {
     resetFiltre("btnViderFiltreModal");
 });
 
-// #
-// Gérer l'affichage des valeurs des inputs range
-// Sur la page desktop (filtres en side)
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EVENT FILTRE SIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const btnFiltreSide = document.getElementById("btnFiltreSide");
+
+btnFiltreSide.addEventListener("click", (e) => {
+    e.preventDefault();
+    const filtres = getFiltre("btnFiltreSide");
+
+    const tripsActuels = getTripsInCache();
+
+    const nouveau = filtrerCovoiturages(tripsActuels, filtres);
+
+    affichageTrajets(nouveau);
+});
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EVENT RESET FILTRE SIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const btnResetFiltreSide = document.getElementById("btnViderFiltreSide");
+
+btnResetFiltreSide.addEventListener("click", (e) => {
+    e.preventDefault();
+    resetFiltre("btnViderFiltreSide");
+    const tripsActuels = getTripsInCache();
+    affichageTrajets(tripsActuels);
+});
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EVENT FILTRE MODAL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const btnFiltreModal = document.getElementById("btnFiltreModal");
+
+btnFiltreModal.addEventListener("click", (e) => {
+    e.preventDefault();
+    const filtres = getFiltre("btnFiltreModal");
+
+    const tripsActuels = getTripsInCache();
+
+    const nouveau = filtrerCovoiturages(tripsActuels, filtres);
+
+    affichageTrajets(nouveau);
+});
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EVENT RESET FILTRE MODAL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const btnResetFiltreModal = document.getElementById("btnViderFiltreModal");
+
+btnResetFiltreModal.addEventListener("click", (e) => {
+    resetFiltre("btnViderFiltreModal");
+    const tripsActuels = getTripsInCache();
+    affichageTrajets(tripsActuels);
+});
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EVENEMENTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END
+//
+//
+//
+//
+//
+// START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INPUT DYNAMIQUE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const rangeInputPrixSide = document.getElementById("prixMaxSide");
 const rangeOutputPrixSide = document.getElementById("prixMaxSideOutput");
 
@@ -98,7 +281,7 @@ rangeInputNoteSide.addEventListener("input", function () {
     rangeOutputNoteSide.textContent = `${this.value} / 5`;
 });
 
-// Dans la modale
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MODAL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const rangeInputPrixModal = document.getElementById("prixMaxModal");
 const rangeOutputPrixModal = document.getElementById("prixMaxModalOutput");
 
@@ -126,55 +309,15 @@ rangeInputNoteModal.addEventListener("input", function () {
     rangeOutputNoteModal.textContent = `${this.value} / 5`;
 });
 
-// #
-// Gestion des filtres side
-// Bouton pour filtrer side
-const btnFiltreSide = document.getElementById("btnFiltreSide");
-
-btnFiltreSide.addEventListener("click", (e) => {
-    e.preventDefault();
-    const filtres = getFiltre("btnFiltreSide");
-
-    const tripsActuels = getTripsInCache();
-
-    const nouveau = filtrerCovoiturages(tripsActuels, filtres);
-
-    affichageTrajets(nouveau);
-});
-
-// Bouton pour réinitialiser les filtres side
-const btnResetFiltreSide = document.getElementById("btnViderFiltreSide");
-
-btnResetFiltreSide.addEventListener("click", (e) => {
-    e.preventDefault();
-    resetFiltre("btnViderFiltreSide");
-    const tripsActuels = getTripsInCache();
-    affichageTrajets(tripsActuels);
-});
-
-// Gestion des filtres modal
-// Bouton pour filtrer modal
-const btnFiltreModal = document.getElementById("btnFiltreModal");
-
-btnFiltreModal.addEventListener("click", (e) => {
-    e.preventDefault();
-    const filtres = getFiltre("btnFiltreModal");
-
-    const tripsActuels = getTripsInCache();
-
-    const nouveau = filtrerCovoiturages(tripsActuels, filtres);
-
-    affichageTrajets(nouveau);
-});
-
-// Bouton pour réinitialiser les filtres modal
-const btnResetFiltreModal = document.getElementById("btnViderFiltreModal");
-
-btnResetFiltreModal.addEventListener("click", (e) => {
-    resetFiltre("btnViderFiltreModal");
-    const tripsActuels = getTripsInCache();
-    affichageTrajets(tripsActuels);
-});
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ INPUT DYNAMIQUE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END
+//
+//
+//
+//
+//
+// START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTRE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Création des fonctions pour filtrer
 function getFiltre(idBouton) {
@@ -253,7 +396,16 @@ function filtrerCovoiturages(trips, filtres) {
     return tripsFiltre;
 }
 
-// #
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTRE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END
+//
+//
+//
+//
+//
+// START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RECUP ID POUR DETAILS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 // Gestion du clic sur le bouton détails
 // Fonction qui récupère la liste des boutons détails
 function getListBtnDetail() {
@@ -272,3 +424,6 @@ containerListeTrajets.addEventListener("click", (e) => {
     const tripId = btn.dataset.tripid;
     sessionStorage.setItem("tripId", tripId);
 });
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RECUP ID POUR DETAILS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END
