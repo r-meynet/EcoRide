@@ -2,6 +2,7 @@
 // (qui correspond à l'id du trajet cliqué sur la page covoiturages)
 function creationCarteDetails(trips, id) {
     // Déclaration des container à renseigner
+    const containerDetailCard = document.getElementById("detail-card");
     const containerPicture = document.getElementById("profile-picture");
     const containerConducteur = document.getElementById("conducteur");
     const containerEcoLabel = document.getElementById("eco-label");
@@ -24,6 +25,9 @@ function creationCarteDetails(trips, id) {
     }
 
     // Implémentation du html
+    containerDetailCard.className = isTripEco(trajet)
+        ? "card mb-4 border-3 border-primary shadow col-lg-9 mx-lg-auto"
+        : "card mb-4 shadow col-lg-9 mx-lg-auto";
     containerPicture.innerHTML = `<img src="${trajet.photo}" class="profile-picture-lg" alt="Photo de profil de ${trajet.pseudo}" />`;
     containerConducteur.innerHTML = `<div>
                                         <h6 class="fs-5">${trajet.pseudo}</h6>
@@ -33,7 +37,9 @@ function creationCarteDetails(trips, id) {
                                     <div>
                                         <a href="#">voir les avis</a>
                                     </div>`;
-    containerEcoLabel.className = isTripEco(trajet) ? "col-3 fs-5 text-primary mb-auto text-end pe-3 ps-0": "d-none";
+    containerEcoLabel.className = isTripEco(trajet)
+        ? "col-3 fs-5 text-primary mb-auto text-end pe-3 ps-0"
+        : "d-none";
     containerPlacesDispo.innerHTML = `<i class="bi bi-people-fill d-lg-none"></i> ${trajet.places_disponibles} ${placeDispoText}`;
     containerCredits.innerHTML = `<span class="text-primary">${trajet.credit} / cred.user</span>
                                     <i class="bi bi-coin"></i>

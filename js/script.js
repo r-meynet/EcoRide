@@ -14,7 +14,7 @@ function createStars() {
             }
         }
 
-        html += `</span> ${rating} / 5`;
+        html += `<br /></span> ${rating} / 5`;
 
         el.innerHTML = html;
     });
