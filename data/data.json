@@ -15,7 +15,11 @@
             "marque_vehicule": "Hyundai",
             "modele_vehicule": "Kona",
             "energie_vehicule": "Electrique",
-            "preferences": ["Pause café possible", "Climatisation", "Bagages volumineux acceptés"],
+            "preferences": [
+                "Pause café possible",
+                "Climatisation",
+                "Bagages volumineux acceptés"
+            ],
             "annee_vehicule": 2020
         },
         {
@@ -33,7 +37,11 @@
             "marque_vehicule": "Mercedes",
             "modele_vehicule": "GLA",
             "energie_vehicule": "Essence",
-            "preferences": ["Musique OK", "Climatisation", "Animaux acceptés"],
+            "preferences": [
+                "Musique OK",
+                "Climatisation",
+                "Animaux acceptés"
+            ],
             "annee_vehicule": 2021
         },
         {
@@ -51,7 +59,11 @@
             "marque_vehicule": "Volkswagen",
             "modele_vehicule": "Tiguan",
             "energie_vehicule": "Electrique",
-            "preferences": ["Pause café possible", "Silence apprécié", "Siège enfant possible"],
+            "preferences": [
+                "Pause café possible",
+                "Silence apprécié",
+                "Siège enfant possible"
+            ],
             "annee_vehicule": 2018
         },
         {
@@ -92,7 +104,10 @@
             "marque_vehicule": "Toyota",
             "modele_vehicule": "C-HR",
             "energie_vehicule": "Essence",
-            "preferences": ["Non fumeur obligatoire", "Pause café possible"],
+            "preferences": [
+                "Non fumeur obligatoire",
+                "Pause café possible"
+            ],
             "annee_vehicule": 2021
         },
         {
@@ -133,7 +148,10 @@
             "marque_vehicule": "Renault",
             "modele_vehicule": "Captur",
             "energie_vehicule": "Electrique",
-            "preferences": ["Silence apprécié", "Animaux acceptés"],
+            "preferences": [
+                "Silence apprécié",
+                "Animaux acceptés"
+            ],
             "annee_vehicule": 2019
         },
         {
@@ -197,7 +215,10 @@
             "marque_vehicule": "Mercedes",
             "modele_vehicule": "Classe A",
             "energie_vehicule": "Diesel",
-            "preferences": ["Musique OK", "Pause café possible"],
+            "preferences": [
+                "Musique OK",
+                "Pause café possible"
+            ],
             "annee_vehicule": 2022
         },
         {
@@ -307,7 +328,11 @@
             "marque_vehicule": "Toyota",
             "modele_vehicule": "RAV4",
             "energie_vehicule": "Essence",
-            "preferences": ["Non fumeur obligatoire", "Conversation bienvenue", "Silence apprécié"],
+            "preferences": [
+                "Non fumeur obligatoire",
+                "Conversation bienvenue",
+                "Silence apprécié"
+            ],
             "annee_vehicule": 2020
         },
         {
@@ -371,7 +396,11 @@
             "marque_vehicule": "BMW",
             "modele_vehicule": "Serie 3",
             "energie_vehicule": "Electrique",
-            "preferences": ["Climatisation", "Non fumeur obligatoire", "Silence apprécié"],
+            "preferences": [
+                "Climatisation",
+                "Non fumeur obligatoire",
+                "Silence apprécié"
+            ],
             "annee_vehicule": 2020
         },
         {
@@ -411,7 +440,11 @@
             "marque_vehicule": "Renault",
             "modele_vehicule": "Scenic",
             "energie_vehicule": "Electrique",
-            "preferences": ["Climatisation", "Musique OK", "Animaux acceptés"],
+            "preferences": [
+                "Climatisation",
+                "Musique OK",
+                "Animaux acceptés"
+            ],
             "annee_vehicule": 2018
         },
         {
@@ -429,7 +462,11 @@
             "marque_vehicule": "Mercedes",
             "modele_vehicule": "GLA",
             "energie_vehicule": "Essence",
-            "preferences": ["Musique OK", "Non fumeur obligatoire", "Bagages volumineux acceptés"],
+            "preferences": [
+                "Musique OK",
+                "Non fumeur obligatoire",
+                "Bagages volumineux acceptés"
+            ],
             "annee_vehicule": 2018
         },
         {
@@ -470,7 +507,10 @@
             "marque_vehicule": "Peugeot",
             "modele_vehicule": "2008",
             "energie_vehicule": "Essence",
-            "preferences": ["Musique OK", "Non fumeur obligatoire"],
+            "preferences": [
+                "Musique OK",
+                "Non fumeur obligatoire"
+            ],
             "annee_vehicule": 2016
         },
         {
@@ -488,7 +528,11 @@
             "marque_vehicule": "Dacia",
             "modele_vehicule": "Duster",
             "energie_vehicule": "Essence",
-            "preferences": ["Animaux acceptés", "Silence apprécié", "Non fumeur obligatoire"],
+            "preferences": [
+                "Animaux acceptés",
+                "Silence apprécié",
+                "Non fumeur obligatoire"
+            ],
             "annee_vehicule": 2015
         },
         {
@@ -529,7 +573,11 @@
             "marque_vehicule": "Renault",
             "modele_vehicule": "Clio",
             "energie_vehicule": "Essence",
-            "preferences": ["Non fumeur obligatoire", "Musique OK", "Animaux acceptés"],
+            "preferences": [
+                "Non fumeur obligatoire",
+                "Musique OK",
+                "Animaux acceptés"
+            ],
             "annee_vehicule": 2021
         },
         {
@@ -547,7 +595,10 @@
             "marque_vehicule": "Tesla",
             "modele_vehicule": "Model Y",
             "energie_vehicule": "Diesel",
-            "preferences": ["Bagages volumineux acceptés", "Pause café possible"],
+            "preferences": [
+                "Bagages volumineux acceptés",
+                "Pause café possible"
+            ],
             "annee_vehicule": 2022
         },
         {
@@ -565,7 +616,10 @@
             "marque_vehicule": "Toyota",
             "modele_vehicule": "C-HR",
             "energie_vehicule": "Diesel",
-            "preferences": ["Conversation bienvenue", "Animaux acceptés"],
+            "preferences": [
+                "Conversation bienvenue",
+                "Animaux acceptés"
+            ],
             "annee_vehicule": 2023
         },
         {
@@ -583,7 +637,11 @@
             "marque_vehicule": "Toyota",
             "modele_vehicule": "C-HR",
             "energie_vehicule": "Essence",
-            "preferences": ["Non fumeur obligatoire", "Silence apprécié", "Musique OK"],
+            "preferences": [
+                "Non fumeur obligatoire",
+                "Silence apprécié",
+                "Musique OK"
+            ],
             "annee_vehicule": 2022
         },
         {
@@ -601,7 +659,10 @@
             "marque_vehicule": "BMW",
             "modele_vehicule": "Serie 1",
             "energie_vehicule": "Essence",
-            "preferences": ["Animaux acceptés", "Siège enfant possible"],
+            "preferences": [
+                "Animaux acceptés",
+                "Siège enfant possible"
+            ],
             "annee_vehicule": 2023
         },
         {
@@ -619,7 +680,10 @@
             "marque_vehicule": "Toyota",
             "modele_vehicule": "Yaris",
             "energie_vehicule": "Electrique",
-            "preferences": ["Bagages volumineux acceptés", "Non fumeur obligatoire"],
+            "preferences": [
+                "Bagages volumineux acceptés",
+                "Non fumeur obligatoire"
+            ],
             "annee_vehicule": 2019
         },
         {
@@ -637,7 +701,11 @@
             "marque_vehicule": "Tesla",
             "modele_vehicule": "Model Y",
             "energie_vehicule": "Electrique",
-            "preferences": ["Non fumeur obligatoire", "Silence apprécié", "Musique OK"],
+            "preferences": [
+                "Non fumeur obligatoire",
+                "Silence apprécié",
+                "Musique OK"
+            ],
             "annee_vehicule": 2020
         },
         {
@@ -655,7 +723,11 @@
             "marque_vehicule": "Citroën",
             "modele_vehicule": "C4",
             "energie_vehicule": "Essence",
-            "preferences": ["Silence apprécié", "Non fumeur obligatoire", "Siège enfant possible"],
+            "preferences": [
+                "Silence apprécié",
+                "Non fumeur obligatoire",
+                "Siège enfant possible"
+            ],
             "annee_vehicule": 2017
         },
         {
@@ -673,7 +745,10 @@
             "marque_vehicule": "Citroën",
             "modele_vehicule": "C4",
             "energie_vehicule": "Diesel",
-            "preferences": ["Pause café possible", "Non fumeur obligatoire"],
+            "preferences": [
+                "Pause café possible",
+                "Non fumeur obligatoire"
+            ],
             "annee_vehicule": 2018
         },
         {
@@ -691,7 +766,10 @@
             "marque_vehicule": "Dacia",
             "modele_vehicule": "Duster",
             "energie_vehicule": "Essence",
-            "preferences": ["Conversation bienvenue", "Climatisation"],
+            "preferences": [
+                "Conversation bienvenue",
+                "Climatisation"
+            ],
             "annee_vehicule": 2020
         },
         {
@@ -709,7 +787,10 @@
             "marque_vehicule": "Toyota",
             "modele_vehicule": "Yaris",
             "energie_vehicule": "Essence",
-            "preferences": ["Pause café possible", "Musique OK"],
+            "preferences": [
+                "Pause café possible",
+                "Musique OK"
+            ],
             "annee_vehicule": 2019
         },
         {
@@ -750,7 +831,10 @@
             "marque_vehicule": "BMW",
             "modele_vehicule": "Serie 3",
             "energie_vehicule": "Electrique",
-            "preferences": ["Animaux acceptés", "Siège enfant possible"],
+            "preferences": [
+                "Animaux acceptés",
+                "Siège enfant possible"
+            ],
             "annee_vehicule": 2018
         },
         {
@@ -768,7 +852,11 @@
             "marque_vehicule": "Hyundai",
             "modele_vehicule": "i20",
             "energie_vehicule": "Electrique",
-            "preferences": ["Siège enfant possible", "Bagages volumineux acceptés", "Musique OK"],
+            "preferences": [
+                "Siège enfant possible",
+                "Bagages volumineux acceptés",
+                "Musique OK"
+            ],
             "annee_vehicule": 2017
         },
         {
@@ -786,7 +874,10 @@
             "marque_vehicule": "Tesla",
             "modele_vehicule": "Model 3",
             "energie_vehicule": "Electrique",
-            "preferences": ["Bagages volumineux acceptés", "Conversation bienvenue"],
+            "preferences": [
+                "Bagages volumineux acceptés",
+                "Conversation bienvenue"
+            ],
             "annee_vehicule": 2019
         },
         {
@@ -804,7 +895,11 @@
             "marque_vehicule": "Peugeot",
             "modele_vehicule": "508",
             "energie_vehicule": "Essence",
-            "preferences": ["Musique OK", "Bagages volumineux acceptés", "Silence apprécié"],
+            "preferences": [
+                "Musique OK",
+                "Bagages volumineux acceptés",
+                "Silence apprécié"
+            ],
             "annee_vehicule": 2018
         },
         {
@@ -868,7 +963,10 @@
             "marque_vehicule": "BMW",
             "modele_vehicule": "Serie 3",
             "energie_vehicule": "Electrique",
-            "preferences": ["Animaux acceptés", "Musique OK"],
+            "preferences": [
+                "Animaux acceptés",
+                "Musique OK"
+            ],
             "annee_vehicule": 2019
         },
         {
@@ -886,7 +984,11 @@
             "marque_vehicule": "Tesla",
             "modele_vehicule": "Model Y",
             "energie_vehicule": "Electrique",
-            "preferences": ["Siège enfant possible", "Climatisation", "Pause café possible"],
+            "preferences": [
+                "Siège enfant possible",
+                "Climatisation",
+                "Pause café possible"
+            ],
             "annee_vehicule": 2023
         },
         {
@@ -904,7 +1006,10 @@
             "marque_vehicule": "Citroën",
             "modele_vehicule": "C4",
             "energie_vehicule": "Essence",
-            "preferences": ["Siège enfant possible", "Bagages volumineux acceptés"],
+            "preferences": [
+                "Siège enfant possible",
+                "Bagages volumineux acceptés"
+            ],
             "annee_vehicule": 2016
         },
         {
@@ -922,7 +1027,10 @@
             "marque_vehicule": "Volkswagen",
             "modele_vehicule": "ID.3",
             "energie_vehicule": "Electrique",
-            "preferences": ["Bagages volumineux acceptés", "Animaux acceptés"],
+            "preferences": [
+                "Bagages volumineux acceptés",
+                "Animaux acceptés"
+            ],
             "annee_vehicule": 2020
         },
         {
@@ -963,7 +1071,10 @@
             "marque_vehicule": "Volkswagen",
             "modele_vehicule": "Golf",
             "energie_vehicule": "Electrique",
-            "preferences": ["Animaux acceptés", "Siège enfant possible"],
+            "preferences": [
+                "Animaux acceptés",
+                "Siège enfant possible"
+            ],
             "annee_vehicule": 2017
         },
         {
@@ -988,6 +1099,98 @@
                 "Conversation bienvenue"
             ],
             "annee_vehicule": 2019
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "nom": "NomTest",
+            "prenom": "PrenomTest",
+            "pseudo": "PseudoTest",
+            "mail": "test@yahoo.fr",
+            "password": "Mot2Passe2Test@",
+            "token": "b15f9b905dad07a4411ed644c06560f3510b9a80"
+        },
+        {
+            "id": 2,
+            "nom": "Durand",
+            "prenom": "Lina",
+            "pseudo": "lina",
+            "mail": "lina.durand@protonmail.com",
+            "password": "=QMJdf--eEXt^6",
+            "token": "1ae16f3230eb755f2931842208ed137b847f462f"
+        },
+        {
+            "id": 3,
+            "nom": "Laurent",
+            "prenom": "Maya",
+            "pseudo": "maya",
+            "mail": "maya.laurent@yahoo.fr",
+            "password": "1NHU;oO3}g_;Q)",
+            "token": "f3697b9b84cbea489bb310f2d0f632ad003df376"
+        },
+        {
+            "id": 4,
+            "nom": "Dubois",
+            "prenom": "Thomas",
+            "pseudo": "thomas",
+            "mail": "thomas.dubois@protonmail.com",
+            "password": "En.t5jjBpXeb,x",
+            "token": "fbe80df0c3bc1dd03f28c4be37574be983dfb4ef"
+        },
+        {
+            "id": 5,
+            "nom": "Garcia",
+            "prenom": "Thomas",
+            "pseudo": "thomas",
+            "mail": "thomas.garcia@gmail.com",
+            "password": "hIRv9l5T(*N*M*",
+            "token": "a76bd5b05ff56f0c8d8556a25b62baf664b8c065"
+        },
+        {
+            "id": 6,
+            "nom": "Garcia",
+            "prenom": "Maya",
+            "pseudo": "maya",
+            "mail": "maya.garcia@protonmail.com",
+            "password": "%zkjy;[eSD05GY",
+            "token": "c572729c0ee384fbc82a442d0f91b1d5072fb380"
+        },
+        {
+            "id": 7,
+            "nom": "Bernard",
+            "prenom": "Hugo",
+            "pseudo": "hugo",
+            "mail": "hugo.bernard@yahoo.fr",
+            "password": "@h;-EqRR&LL79P",
+            "token": "896f5e7e56715d9267b377a332c819f7ea7cb95e"
+        },
+        {
+            "id": 8,
+            "nom": "Lefevre",
+            "prenom": "Yanis",
+            "pseudo": "yanis",
+            "mail": "yanis.lefevre@gmail.com",
+            "password": "$E}4lJMoBrLK{;",
+            "token": "eb7b6d0d2c410ab8dd79f82d96b4626091c1a3db"
+        },
+        {
+            "id": 9,
+            "nom": "Moreau",
+            "prenom": "Noémie",
+            "pseudo": "noémie",
+            "mail": "noémie.moreau@protonmail.com",
+            "password": "F6y*XJAG%hqnAX",
+            "token": "3a87e2e03d8839010405df6b0bc404706d014c6f"
+        },
+        {
+            "id": 10,
+            "nom": "Lefevre",
+            "prenom": "Camille",
+            "pseudo": "camille",
+            "mail": "camille.lefevre@yahoo.fr",
+            "password": "$8zNW_iy6.%AkP",
+            "token": "b41f2f15a5288bedcdf28a171a070c70d3f87ef5"
         }
     ]
 }
