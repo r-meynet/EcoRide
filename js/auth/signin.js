@@ -22,9 +22,13 @@ btnConnexion.addEventListener("click", (e) => {
         return invalidMdp();
     }
 
-    // Si tout est ok, on garde le token en cookie et on retourne à la page d'accueil
+    // Si tout est ok, on garde le token et le rôle en cookie et on retourne à la page d'accueil
     const token = user.token;
     setToken(token);
+
+    const role = user.role;
+    setCookie(nameCookieRole, role, 7);
+
     window.location.replace("/");
 });
 

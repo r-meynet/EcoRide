@@ -35,12 +35,14 @@
             <!-- header réalisé avec le composant bootstrap de navbar-->
             <nav class="navbar navbar-expand-lg bg-dark py-0" data-bs-theme="dark">
                 <div class="container-fluid position-relative">
-                    <a href="/compte">
-                        <!-- avatar du compte -->
-                        <i class="bi bi-person-circle fs-1 text-light pb-2"></i>
-                    </a>
+                    <div class="d-flex align-items-center">
+                        <a href="/compte">
+                            <!-- avatar du compte -->
+                            <i class="bi bi-person-circle fs-1 text-light pb-2"></i>
+                        </a>
+                    </div>
 
-                    <!-- nom de la marque ecoRide affiché uniquement sur petits écrans -->
+                    <!-- nom de la marque ecoRide sur petits écrans -->
                     <a class="navbar-brand fs-4 text-light mx-auto d-lg-none" href="/">ecoRide</a>
 
                     <!-- nom de la marque affiché sur écrans lg+, pour le centrer -->
@@ -89,13 +91,21 @@
                                     Contact
                                 </a>
                             </li>
-                            <li class="nav-item text-center">
+                            <li class="nav-item text-center" data-show="disconnected">
                                 <a class="nav-link pt-0" href="/signin">
                                     <i
                                         class="bi bi-box-arrow-right fs-2 py-0 text-light d-none d-lg-inline"></i>
                                     <br />
                                     Connexion
                                 </a>
+                            </li>
+                            <li class="nav-item mx-auto" data-show="connected">
+                                <button class="nav-link pt-0" id="btnSignout">
+                                    <i
+                                        class="bi bi-box-arrow-left fs-2 py-0 text-light d-none d-lg-inline"></i>
+                                    <br />
+                                    Déconnexion
+                                </button>
                             </li>
                         </ul>
                     </div>

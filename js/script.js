@@ -163,5 +163,52 @@ function isConnected() {
     }
 }
 
+function getRole() {
+    return getCookie(nameCookieRole);
+}
+
+function signOut() {
+    eraseCookie(nameCookieToken);
+    eraseCookie(nameCookieRole);
+    window.location.reload();
+}
+
+// Fonction pour afficher ou non les éléments suivant le rôle
+function showAndHideElementsForRoles() {
+    const userConnected = isConnected();
+    const role = getRole();
+
+    let allElementsToEdit = document.querySelectorAll("[data-show]");
+    allElementsToEdit.forEach((element) => {
+        switch (element.dataset.show) {
+            case "disconnected":
+                if (userConnected) {
+                    element.classList.add("d-none");
+                }
+                break;
+            case "connected":
+                if (!userConnected) {
+                    element.classList.add("d-none");
+                }
+                break;
+            case "admin":
+                if (!userConnected || role != "admin") {
+                    element.classList.add("d-none");
+                }
+                break;
+            case "user":
+                if (!userConnected || role != "user") {
+                    element.classList.add("d-none");
+                }
+                break;
+        }
+    });
+}
+
+// déconnexion au clic sur la navbar
+const btnSignout = document.getElementById("btnSignout");
+
+btnSignout.addEventListener("click", signOut);
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONNEXION + ROLES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END
