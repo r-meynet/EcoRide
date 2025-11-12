@@ -31,15 +31,6 @@ function createStars() {
     });
 }
 
-// Requête auprès de la base de données test en json
-let tripBrut = [];
-
-fetch("../data/data.json")
-    .then((reponse) => reponse.json())
-    .then((data) => {
-        tripBrut = data.trips;
-    });
-
 // Fonction qui va afficher les trajets
 function affichageTrajets(trips) {
     // Variables pour l'affichage sur la page
