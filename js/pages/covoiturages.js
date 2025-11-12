@@ -359,7 +359,8 @@ function filtrerCovoiturages(trips, filtres) {
     );
 
     if (isEco) {
-        const tripsFiltreEco = tripsFiltre.filter((trip) => trip.eco);
+        const isEcoTrip = (trip) => trip.energie_vehicule?.toLowerCase() === "electrique";
+        const tripsFiltreEco = tripsFiltre.filter(isEcoTrip);
         return tripsFiltreEco;
     }
 
