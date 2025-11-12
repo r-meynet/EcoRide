@@ -989,5 +989,107 @@
             ],
             "annee_vehicule": 2019
         }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "nom": "NomTest",
+            "prenom": "PrenomTest",
+            "pseudo": "PseudoTest",
+            "mail": "test@yahoo.fr",
+            "password": "Mot2Passe2Test@",
+            "token": "b15f9b905dad07a4411ed644c06560f3510b9a80",
+            "role": "admin"
+        },
+        {
+            "id": 2,
+            "nom": "Durand",
+            "prenom": "Lina",
+            "pseudo": "lina",
+            "mail": "lina.durand@protonmail.com",
+            "password": "=QMJdf--eEXt^6",
+            "token": "1ae16f3230eb755f2931842208ed137b847f462f",
+            "role": "user"
+        },
+        {
+            "id": 3,
+            "nom": "Laurent",
+            "prenom": "Maya",
+            "pseudo": "maya",
+            "mail": "maya.laurent@yahoo.fr",
+            "password": "1NHU;oO3}g_;Q)",
+            "token": "f3697b9b84cbea489bb310f2d0f632ad003df376",
+            "role": "user"
+        },
+        {
+            "id": 4,
+            "nom": "Dubois",
+            "prenom": "Thomas",
+            "pseudo": "thomas",
+            "mail": "thomas.dubois@protonmail.com",
+            "password": "En.t5jjBpXeb,x",
+            "token": "fbe80df0c3bc1dd03f28c4be37574be983dfb4ef",
+            "role": "user"
+        },
+        {
+            "id": 5,
+            "nom": "Garcia",
+            "prenom": "Thomas",
+            "pseudo": "thomas",
+            "mail": "thomas.garcia@gmail.com",
+            "password": "hIRv9l5T(*N*M*",
+            "token": "a76bd5b05ff56f0c8d8556a25b62baf664b8c065",
+            "role": "user"
+        },
+        {
+            "id": 6,
+            "nom": "Garcia",
+            "prenom": "Maya",
+            "pseudo": "maya",
+            "mail": "maya.garcia@protonmail.com",
+            "password": "%zkjy;[eSD05GY",
+            "token": "c572729c0ee384fbc82a442d0f91b1d5072fb380",
+            "role": "user"
+        },
+        {
+            "id": 7,
+            "nom": "Bernard",
+            "prenom": "Hugo",
+            "pseudo": "hugo",
+            "mail": "hugo.bernard@yahoo.fr",
+            "password": "@h;-EqRR&LL79P",
+            "token": "896f5e7e56715d9267b377a332c819f7ea7cb95e",
+            "role": "user"
+        },
+        {
+            "id": 8,
+            "nom": "Lefevre",
+            "prenom": "Yanis",
+            "pseudo": "yanis",
+            "mail": "yanis.lefevre@gmail.com",
+            "password": "$E}4lJMoBrLK{;",
+            "token": "eb7b6d0d2c410ab8dd79f82d96b4626091c1a3db",
+            "role": "user"
+        },
+        {
+            "id": 9,
+            "nom": "Moreau",
+            "prenom": "Noémie",
+            "pseudo": "noémie",
+            "mail": "noémie.moreau@protonmail.com",
+            "password": "F6y*XJAG%hqnAX",
+            "token": "3a87e2e03d8839010405df6b0bc404706d014c6f",
+            "role": "user"
+        },
+        {
+            "id": 10,
+            "nom": "Lefevre",
+            "prenom": "Camille",
+            "pseudo": "camille",
+            "mail": "camille.lefevre@yahoo.fr",
+            "password": "$8zNW_iy6.%AkP",
+            "token": "b41f2f15a5288bedcdf28a171a070c70d3f87ef5",
+            "role": "user"
+        }
     ]
 }

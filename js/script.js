@@ -1,3 +1,14 @@
+// Requête auprès de la base de données test en json
+let tripBrut = [];
+let usersArray = [];
+
+fetch("../data/data.json")
+    .then((reponse) => reponse.json())
+    .then((data) => {
+        tripBrut = data.trips;
+        usersArray = data.users;
+    });
+
 // Création d'une fonction pour récupérer la moyenne des avis et la transformer en étoiles
 function createStars() {
     document.querySelectorAll(".rating").forEach((el) => {
@@ -104,7 +115,7 @@ function creationCarteTrajet(trip, destination) {
     </div>
     <div class="col row row-cols-2 row-cols-lg-1 order-lg-3 ps-3 py-2 mb-auto my-lg-auto text-center fs-5">
     <div class="col pe-0">${trip.credit} <i class="bi bi-coin"></i></div>
-    <div class="col"><i class="bi bi-people-fill d-lg-none"></i> ${
+    <div class="col"><i class="bi bi-people-fill d-lg-none"></i>${
         trip.places_disponibles
     } <span class="d-none d-lg-inline">places disponibles</span></div>
     </div>
@@ -204,3 +215,110 @@ function isEmpty(idForm) {
         return false;
     }
 }
+
+// START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ COOKIES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ COOKIES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END
+//
+//
+//
+//
+//
+// START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONNEXION + ROLES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+const nameCookieToken = "accesstoken";
+const nameCookieRole = "role";
+
+function setToken(token) {
+    setCookie(nameCookieToken, token, 7);
+}
+
+function getToken() {
+    return getCookie(nameCookieToken);
+}
+
+function isConnected() {
+    if (getToken() == null || getToken() == undefined) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function getRole() {
+    return getCookie(nameCookieRole);
+}
+
+function signOut() {
+    eraseCookie(nameCookieToken);
+    eraseCookie(nameCookieRole);
+    window.location.reload();
+}
+
+// Fonction pour afficher ou non les éléments suivant le rôle
+function showAndHideElementsForRoles() {
+    const userConnected = isConnected();
+    const role = getRole();
+
+    let allElementsToEdit = document.querySelectorAll("[data-show]");
+    allElementsToEdit.forEach((element) => {
+        switch (element.dataset.show) {
+            case "disconnected":
+                if (userConnected) {
+                    element.classList.add("d-none");
+                }
+                break;
+            case "connected":
+                if (!userConnected) {
+                    element.classList.add("d-none");
+                }
+                break;
+            case "admin":
+                if (!userConnected || role != "admin") {
+                    element.classList.add("d-none");
+                }
+                break;
+            case "user":
+                if (!userConnected || role != "user") {
+                    element.classList.add("d-none");
+                }
+                break;
+        }
+    });
+}
+
+// déconnexion au clic sur la navbar
+const btnSignout = document.getElementById("btnSignout");
+
+btnSignout.addEventListener("click", signOut);
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONNEXION + ROLES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END
