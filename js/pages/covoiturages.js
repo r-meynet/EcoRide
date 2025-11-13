@@ -343,7 +343,33 @@ function getFiltre(idBouton) {
     return { valueEco, valuePrix, valueDuree, valueNote };
 }
 
-function resetFiltre() {}
+function resetFiltre(idBouton) {
+    // On récupère le bouton qui a été cliqué
+    const bouton = document.getElementById(idBouton);
+
+    // Suivant où a été effectué le filtre, on définit un suffixe de variables
+    const suffix = bouton.dataset.filtre === "side" ? "Side" : "Modal";
+
+    // On récupère les inputs dans la section utilisée
+    const inputEco = document.getElementById(`switchCheckEco${suffix}`);
+    const inputPrix = document.getElementById(`prixMax${suffix}`);
+    const inputDuree = document.getElementById(`dureeMax${suffix}`);
+
+    // On remet les filtres à leurs valeurs d'origine
+    const valueEco = !inputEco.checked;
+    const valuePrix = inputPrix.defaultValue;
+    const valueDuree = inputDuree.defaultValue;
+
+    // On remet le formulaire à zéro
+    document.getElementById(`formulaire${suffix}`).reset();
+    const outputPrix = document.getElementById(`prixMax${suffix}Output`);
+    const outputDuree = document.getElementById(`dureeMax${suffix}Output`);
+    outputPrix.value = `${valuePrix} crédits`;
+    outputDuree.value = `${valueDuree} heures`;
+
+    // Pour finir, on retourne un objet avec les 3 statuts de filtres
+    return { valueEco, valuePrix, valueDuree };
+}
 
 function filtrerCovoiturages(trips, filtres) {
     const isEco = filtres.valueEco;
