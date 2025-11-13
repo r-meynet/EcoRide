@@ -17,13 +17,8 @@ export const allRoutes = [
         [],
         "js/pages/detail-covoiturage.js"
     ),
-    new Route(
-        "/signin",
-        "Connexion",
-        "/pages/auth/signin.html",
-        [],
-        "js/auth/signin.js"
-    ),
+    new Route("/signin", "Connexion", "/pages/auth/signin.html", [], "js/auth/signin.js"),
+    new Route("/mentions", "Mentions légales", "/pages/mentions.html", []),
 ];
 
 //Le titre s'affiche comme ceci : Route.titre - websitename
