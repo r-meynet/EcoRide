@@ -35,7 +35,7 @@ function creationCarteDetails(trips, id) {
                                         <div class="rating" data-rating="${trajet.note}">
                                     </div>
                                     <div>
-                                        <a href="#">voir les avis</a>
+                                        <a href="/avis">voir les avis</a>
                                     </div>`;
     containerEcoLabel.className = isTripEco(trajet)
         ? "col-3 fs-5 text-primary mb-auto text-end pe-3 ps-0"

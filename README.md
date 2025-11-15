@@ -20,71 +20,90 @@ L’application est **centrée sur le front-end** pour cette version ECF, avec u
 ## 🧭 Fonctionnalités principales
 
 ### ✅ Partie réalisée (MVP fonctionnel)
-| Fonction | Description |
-|-----------|--------------|
-| 🔍 Recherche de trajets | Par ville de départ / arrivée / date |
-| 📅 Filtrage avancé | Prix max, durée max, note minimale, véhicule électrique |
-| 🧾 Page de détail | Informations complètes sur le trajet (conducteur, véhicule, préférences) |
-| 🌱 Badge éco | Mise en avant des trajets effectués avec véhicule électrique |
-| 🧠 Mémorisation des sélections | Session Storage entre pages |
-| 🧭 Routage front | Navigation entre pages via `router.js` |
-| 📱 Design responsive | Bootstrap 5.3 custom via SCSS |
-| 📂 Données simulées | `data/data.json` jouant le rôle de base de données locale |
-| 🚀 Déploiement | Hébergé sur Netlify (SPA `_redirects`) |
+
+| Fonction                       | Description                                                              |
+| ------------------------------ | ------------------------------------------------------------------------ |
+| 🔍 Recherche de trajets        | Par ville de départ / arrivée / date                                     |
+| 📅 Filtrage avancé             | Prix max, durée max, note minimale, véhicule électrique                  |
+| 🧾 Page de détail              | Informations complètes sur le trajet (conducteur, véhicule, préférences) |
+| 🌱 Badge éco                   | Mise en avant des trajets effectués avec véhicule électrique             |
+| 🧠 Mémorisation des sélections | Session Storage entre pages                                              |
+| 🧭 Routage front               | Navigation entre pages via `router.js`                                   |
+| 📱 Design responsive           | Bootstrap 5.3 custom via SCSS                                            |
+| 📂 Données simulées            | `data/data.json` jouant le rôle de base de données locale                |
+| 🚀 Déploiement                 | Hébergé sur Netlify (SPA `_redirects`)                                   |
 
 ### 🔜 Partie non encore développée (Back & fonctionnalités avancées)
-| Fonction | État |
-|-----------|-------|
-| Création de compte / connexion | 🕗 À implémenter côté back |
-| Gestion des crédits | 🕗 À simuler dans une future API |
-| Historique et avis | 🕗 Prévu dans le module utilisateur |
-| Rôles Employé / Admin | 🕗 Maquettes et endpoints à documenter |
-| Base de données SQL / NoSQL | 🕗 MCD + scripts fournis (projet à venir) |
+
+| Fonction                       | État                                   |
+| ------------------------------ | -------------------------------------- |
+| Création de compte / connexion | 🕗 À implémenter côté back             |
+| Gestion des crédits            | 🕗 À simuler dans une future API       |
+| Historique et avis             | 🕗 Prévu dans le module utilisateur    |
+| Rôles Employé / Admin          | 🕗 Maquettes et endpoints à documenter |
+| Base de données SQL / NoSQL    | 🕗 À implémenter                       |
 
 ---
 
 ## 🧱 Architecture du projet
-```
+
+```text
 ecoride/
 ├── data/
 │ └── data.json # Simulation de la base de données
+├── Documents pour ECF/ # Documents demandés dans le cadre de l'ECF Studi
+│ ├── Charte_graphique.pdf
+│ ├── diag_utilisation_ecoride.drawio
+│ ├── Documentation_technique.pdf
+│ ├── Gestion_de_projet.pdf
+│ └── Manuel_d'utilisation.pdf
+├── images/ # Ressources graphiques (libres de droit)
 ├── js/
+│ ├── auth/ # Scripts d'authentification
+│ │ └── signin.js
 │ ├── pages/ # Scripts par page
-│ │ ├── home.js
 │ │ ├── covoiturages.js
-│ │ └── detail-covoiturage.js
-│ ├── router/ # Routage client
-│ │ ├── allRoutes.js
-│ │ └── router.js
-│ ├── components/ # Composants réutilisables
-│ ├── helpers/ # Fonctions utilitaires
+│ │ ├── detail-covoiturage.js
+│ │ └── home.js
 │ └── script.js # Initialisation globale
 ├── pages/ # Templates HTML partiels
-│ ├── home.html
+│ ├── auth/ # Scripts d'authentification
+│ │ └── signin.html
+│ ├── 404.html
+│ ├── contact.html
 │ ├── covoiturages.html
 │ ├── detail-covoiturage.html
-│ ├── mentions.html
-│ └── contact.html
+│ ├── home.html
+│ └── mentions.html
+├── Router/ # Fichier nécessaires au système de routage
+│ ├── allRoute.js
+│ ├── Route.js
+│ └── router.js
 ├── scss/ # Styles SCSS (custom Bootstrap)
 │ ├── _custom.scss
+│ ├── main.css
+│ ├── main.css.map
 │ └── style.scss
-├── images/ # Ressources graphiques
-├── index.html # Page d'accueil
 ├── _redirects # Redirection Netlify (SPA)
+├── .gitignore # Dossiers ignorés par git
+├── index.html # Page d'accueil
+├── package-lock.js
+├── package.js
 └── README.md
 ```
+
 ---
 
 ## 🧩 Technologies utilisées
 
-| Domaine | Outils |
-|----------|--------|
-| **Front-end** | HTML5, SCSS, Bootstrap 5.3, JavaScript |
-| **Routage SPA** | Custom Router (history API + `_redirects` Netlify) |
-| **Simulation API** | `data.json` + Fetch |
-| **Stockage local** | `sessionStorage`, cookies |
-| **Déploiement** | Netlify |
-| **Maquettage** | Figma, draw.io |
+| Domaine                | Outils                                      |
+| ---------------------- | ------------------------------------------- |
+| **Front-end**          | HTML5, SCSS, Bootstrap 5.3, JavaScript      |
+| **Routage SPA**        | Custom Router                               |
+| **Simulation API**     | `data.json` + Fetch                         |
+| **Stockage local**     | `sessionStorage`, cookies                   |
+| **Déploiement**        | Netlify                                     |
+| **Maquettage**         | Figma, draw.io                              |
 | **Gestion de version** | Git + branches `dev` / `main` / `feature/*` |
 
 ---
@@ -92,16 +111,22 @@ ecoride/
 ## ⚙️ Installation et exécution locale
 
 ### 1️⃣ Cloner le dépôt
+
 ```bash
 git clone https://github.com/ton-profil/ecoride.git
 ```
+
 ### 2️⃣ Lancer un serveur local
+
 Utiliser une extension comme Live Server (VSCode)
 ou en ligne de commande :
+
 ```bash
 npx serve
 ```
+
 ### 3️⃣ Accéder à l’application
+
 ```bash
 Ouvrir http://localhost:3000
 ```
@@ -113,17 +138,18 @@ Ouvrir http://localhost:3000
 Dépôt Git connecté à Netlify
 Build command : (aucune — projet statique)
 Publish directory : /
-Fichier _redirects :
-/*    /index.html   200
+Fichier \_redirects :
+/\* /index.html 200
 
 ---
 
-## 📘 Documentation complémentaire (fournie dans la copie à rendre)
+## 📘 Documentation complémentaire dans le dépôt
 
-Charte graphique & maquettes Figma (6 écrans)
-Manuel utilisateur PDF
-Lien Netlify + identifiants de démo
-Lien Trello / Notion (gestion de projet)
+Charte graphique.pdf (contenant maquettes)
+Manuel utilisateur.pdf
+diag_utilisation_ecoride.drawio
+Gestion de projet.pdf
+Documentation technique.pdf
 
 ---
 
